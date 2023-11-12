@@ -14,6 +14,7 @@
 		1078D1C02B0116CE00A265D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1078D1BE2B0116CE00A265D0 /* LaunchScreen.storyboard */; };
 		1078D1C82B01171500A265D0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1078D1C72B01171500A265D0 /* .gitignore */; };
 		10CB8EFA2B01455900CFC8D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EF92B01455900CFC8D6 /* MainViewController.swift */; };
+		373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A852B01472800E4EE27 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		1078D1C72B01171500A265D0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1078D1C92B0118EE00A265D0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10CB8EF92B01455900CFC8D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		373D2A852B01472800E4EE27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				1078D1BE2B0116CE00A265D0 /* LaunchScreen.storyboard */,
 				1078D1C12B0116CE00A265D0 /* Info.plist */,
 				10CB8EF92B01455900CFC8D6 /* MainViewController.swift */,
+				373D2A852B01472800E4EE27 /* SettingsViewController.swift */,
 			);
 			path = Rainbow_NLP;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
+				373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */,
 				10CB8EFA2B01455900CFC8D6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
