@@ -26,6 +26,7 @@
 		1078D1BF2B0116CE00A265D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1078D1C12B0116CE00A265D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1078D1C72B01171500A265D0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		1078D1C92B0118EE00A265D0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +43,7 @@
 		1078D1A72B0116CD00A265D0 = {
 			isa = PBXGroup;
 			children = (
+				1078D1C92B0118EE00A265D0 /* README.md */,
 				1078D1C72B01171500A265D0 /* .gitignore */,
 				1078D1B22B0116CD00A265D0 /* Rainbow_NLP */,
 				1078D1B12B0116CD00A265D0 /* Products */,
