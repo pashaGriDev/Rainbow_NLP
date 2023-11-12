@@ -14,6 +14,8 @@
 		1078D1C02B0116CE00A265D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1078D1BE2B0116CE00A265D0 /* LaunchScreen.storyboard */; };
 		1078D1C82B01171500A265D0 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 1078D1C72B01171500A265D0 /* .gitignore */; };
 		10CB8EFA2B01455900CFC8D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EF92B01455900CFC8D6 /* MainViewController.swift */; };
+		10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */; };
+		10CB8EFF2B0147DE00CFC8D6 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		1078D1C72B01171500A265D0 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1078D1C92B0118EE00A265D0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10CB8EF92B01455900CFC8D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
+		10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 		1078D1B22B0116CD00A265D0 /* Rainbow_NLP */ = {
 			isa = PBXGroup;
 			children = (
+				10CB8EFB2B01473C00CFC8D6 /* Model */,
 				1078D1B32B0116CD00A265D0 /* AppDelegate.swift */,
 				1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */,
 				1078D1B72B0116CD00A265D0 /* ViewController.swift */,
@@ -70,6 +75,15 @@
 				10CB8EF92B01455900CFC8D6 /* MainViewController.swift */,
 			);
 			path = Rainbow_NLP;
+			sourceTree = "<group>";
+		};
+		10CB8EFB2B01473C00CFC8D6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */,
+				10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +160,8 @@
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
+				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
+				10CB8EFF2B0147DE00CFC8D6 /* Statistics.swift in Sources */,
 				10CB8EFA2B01455900CFC8D6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
