@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
         get { false }
         set { navigationBarView.pauseButton.isHidden = newValue }
     }
+    /// default value is "Unknown"
     var setNavigationTitle: String {
         get { "Unknown" }
         set { navigationBarView.titleLabel.text = newValue }
