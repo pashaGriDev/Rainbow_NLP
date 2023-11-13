@@ -8,6 +8,7 @@
 import UIKit
 
 class SwitchCell: UICollectionViewCell {
+    //MARK: - UI Elements
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -20,10 +21,11 @@ class SwitchCell: UICollectionViewCell {
         return switchControl
     }()
     
+    //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        layer.cornerRadius = 10
+        layer.cornerRadius = Constants.cornerRadius
         contentView.addSubview(nameLabel)
         contentView.addSubview(switchControl)
         setupConstraints()
@@ -33,18 +35,17 @@ class SwitchCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            // nameLabel constraints
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding),
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            // switchControl constraints
-            switchControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            switchControl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding),
             switchControl.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
+    //MARK: - Cell config
     func configure(with parameter: Parameter) {
         nameLabel.text = parameter.name
         switchControl.isOn = parameter.defaultValue as? Bool ?? false
