@@ -8,9 +8,8 @@
 import UIKit
 
 class BaseViewController: UIViewController {
-    // MARK: - Dependencies
-    var backgroundColor: UIColor = .lightGray
-    let navigationBarView = CustomNavigationView()
+    // MARK: - Private properties
+    private let navigationBarView = CustomNavigationView()
 
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -19,7 +18,7 @@ class BaseViewController: UIViewController {
     }
     
     func setup() {
-        view.backgroundColor = backgroundColor
+        view.backgroundColor = .lightGray
         view.addSubview(navigationBarView)
         navigationController?.navigationBar.isHidden = true
         
@@ -33,6 +32,10 @@ class BaseViewController: UIViewController {
             action: #selector(pauseButtonAction),
             for: .touchUpInside
         )
+    }
+    
+    func changeColor(_ color: UIColor) {
+        view.backgroundColor = color
     }
 }
 

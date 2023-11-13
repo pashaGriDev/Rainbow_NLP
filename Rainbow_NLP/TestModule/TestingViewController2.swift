@@ -1,5 +1,5 @@
 //
-//  TestingViewController.swift
+//  TestingViewController2.swift
 //  Rainbow_NLP
 //
 //  Created by Павел Грицков on 13.11.23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TestingViewController: BaseViewController {
+final class TestingViewController2: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,12 +15,12 @@ final class TestingViewController: BaseViewController {
     
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
-        
+        print("override backButtonAction")
+        navigationController?.popViewController(animated: true)
     }
     
     override func pauseButtonAction(_ sender: UIButton) {
         super.pauseButtonAction(sender)
-        let vc = TestingViewController2()
-        navigationController?.pushViewController(vc, animated: true)
+        print("override pauseButtonAction")
     }
 }
