@@ -11,8 +11,8 @@ final class TestingViewController2: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setTitle(text: "Test view 2")
+        isHiddenPauseButton = true
+        setNavigationTitle = "Hello World"
     }
     
     override func backButtonAction(_ sender: UIButton) {

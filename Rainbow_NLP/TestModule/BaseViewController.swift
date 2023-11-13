@@ -9,16 +9,21 @@ import UIKit
 
 class BaseViewController: UIViewController {
     // MARK: - Private properties
-    /*private*/ let navigationBarView = CustomNavigationView()    //!!!: снял приватность для того, чтобы привязываться к элементу на экране
-
+    let navigationBarView = CustomNavigationView()
+    var isHiddenPauseButton: Bool {
+        get { false }
+        set { navigationBarView.pauseButton.isHidden = newValue }
+    }
+    /// default value is "Unknown"
+    var setNavigationTitle: String {
+        get { "Unknown" }
+        set { navigationBarView.titleLabel.text = newValue }
+    }
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-    }
-    
-    func setTitle(text: String) {
-        navigationBarView.titleLabel.text = text
     }
     
     // MARK: - Private methods
