@@ -17,8 +17,11 @@
 		10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */; };
 		10CB8EFF2B0147DE00CFC8D6 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */; };
 		10CB8F012B0150BA00CFC8D6 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F002B0150BA00CFC8D6 /* MainView.swift */; };
-		10CB8F092B01791B00CFC8D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F082B01791B00CFC8D6 /* BaseViewController.swift */; };
-		10CB8F0B2B01946A00CFC8D6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CB8F0A2B01946900CFC8D6 /* Storyboard.storyboard */; };
+		10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */; };
+		10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */; };
+		10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */; };
+		10CB8F152B01B98400CFC8D6 /* CustomNavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */; };
+		10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */; };
 		373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A852B01472800E4EE27 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +39,11 @@
 		10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		10CB8F002B0150BA00CFC8D6 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		10CB8F082B01791B00CFC8D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		10CB8F0A2B01946900CFC8D6 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
+		10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarButton.swift; sourceTree = "<group>"; };
+		10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		373D2A852B01472800E4EE27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +79,8 @@
 		1078D1B22B0116CD00A265D0 /* Rainbow_NLP */ = {
 			isa = PBXGroup;
 			children = (
+				10CB8F162B01B9B200CFC8D6 /* Extention */,
+				10CB8F0C2B01B88D00CFC8D6 /* TestModule */,
 				10CB8EFB2B01473C00CFC8D6 /* Model */,
 				1078D1B32B0116CD00A265D0 /* AppDelegate.swift */,
 				1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */,
@@ -83,8 +91,6 @@
 				10CB8EF92B01455900CFC8D6 /* MainViewController.swift */,
 				373D2A852B01472800E4EE27 /* SettingsViewController.swift */,
 				10CB8F002B0150BA00CFC8D6 /* MainView.swift */,
-				10CB8F082B01791B00CFC8D6 /* BaseViewController.swift */,
-				10CB8F0A2B01946900CFC8D6 /* Storyboard.storyboard */,
 			);
 			path = Rainbow_NLP;
 			sourceTree = "<group>";
@@ -96,6 +102,33 @@
 				10CB8EFE2B0147DE00CFC8D6 /* Statistics.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		10CB8F0C2B01B88D00CFC8D6 /* TestModule */ = {
+			isa = PBXGroup;
+			children = (
+				10CB8F112B01B93C00CFC8D6 /* Components */,
+				10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */,
+				10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */,
+			);
+			path = TestModule;
+			sourceTree = "<group>";
+		};
+		10CB8F112B01B93C00CFC8D6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */,
+				10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		10CB8F162B01B9B200CFC8D6 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */,
+			);
+			path = Extention;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,7 +190,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1078D1C82B01171500A265D0 /* .gitignore in Resources */,
-				10CB8F0B2B01946A00CFC8D6 /* Storyboard.storyboard in Resources */,
 				1078D1C02B0116CE00A265D0 /* LaunchScreen.storyboard in Resources */,
 				1078D1BD2B0116CE00A265D0 /* Assets.xcassets in Resources */,
 			);
@@ -173,9 +205,13 @@
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				10CB8F012B0150BA00CFC8D6 /* MainView.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
+				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
-				10CB8F092B01791B00CFC8D6 /* BaseViewController.swift in Sources */,
+				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
+				10CB8F152B01B98400CFC8D6 /* CustomNavBarButton.swift in Sources */,
+				10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */,
+				10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */,
 				10CB8EFF2B0147DE00CFC8D6 /* Statistics.swift in Sources */,
 				373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */,
 				10CB8EFA2B01455900CFC8D6 /* MainViewController.swift in Sources */,
