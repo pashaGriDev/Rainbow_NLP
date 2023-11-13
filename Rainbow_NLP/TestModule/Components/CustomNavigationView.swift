@@ -18,13 +18,7 @@ final class CustomNavigationView: UIView {
     }
     
     // MARK: - Public properties
-     lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Testing text"
-         label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .regular)
-        label.textAlignment = .center
-        return label
-    }()
+    let titleLabel = makeTitleLabel()
     let backButton = CustomNavBarButton(style: .back)
     let pauseButton = CustomNavBarButton(style: .pause)
     
@@ -71,5 +65,15 @@ final class CustomNavigationView: UIView {
             pauseButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.padding),
             pauseButton.bottomAnchor.constraint(equalTo: backButton.bottomAnchor)
         ])
+    }
+}
+
+extension CustomNavigationView {
+    static func makeTitleLabel() -> UILabel {
+        let label = UILabel()
+        label.text = "Testing text"
+         label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .regular)
+        label.textAlignment = .center
+        return label
     }
 }

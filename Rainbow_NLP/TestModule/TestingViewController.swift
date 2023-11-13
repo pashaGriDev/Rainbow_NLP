@@ -11,6 +11,8 @@ final class TestingViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setTitle(text: "Test view")
     }
     
     override func backButtonAction(_ sender: UIButton) {

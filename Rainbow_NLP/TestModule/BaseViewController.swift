@@ -17,7 +17,12 @@ class BaseViewController: UIViewController {
         setup()
     }
     
-    func setup() {
+    func setTitle(text: String) {
+        navigationBarView.titleLabel.text = text
+    }
+    
+    // MARK: - Private methods
+    private func setup() {
         view.backgroundColor = .lightGray
         view.addSubview(navigationBarView)
         navigationController?.navigationBar.isHidden = true
@@ -32,10 +37,6 @@ class BaseViewController: UIViewController {
             action: #selector(pauseButtonAction),
             for: .touchUpInside
         )
-    }
-    
-    func changeColor(_ color: UIColor) {
-        view.backgroundColor = color
     }
 }
 
