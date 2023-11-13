@@ -9,7 +9,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     // MARK: - Private properties
-    private let navigationBarView = CustomNavigationView()
+    /*private*/ let navigationBarView = CustomNavigationView()    //!!!: снял приватность для того, чтобы привязываться к элементу на экране
 
     // MARK: - Life cycle
     override func viewDidLoad() {
