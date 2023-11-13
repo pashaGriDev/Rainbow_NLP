@@ -9,8 +9,16 @@ import UIKit
 
 class BaseViewController: UIViewController {
     // MARK: - Private properties
-    /*private*/ let navigationBarView = CustomNavigationView()    //!!!: снял приватность для того, чтобы привязываться к элементу на экране
-
+    let navigationBarView = CustomNavigationView()
+    var isHiddenPauseButton: Bool {
+        get {
+            false
+        }
+        set {
+            navigationBarView.pauseButton.isHidden = newValue
+        }
+    }
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
