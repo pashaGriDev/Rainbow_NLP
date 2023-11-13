@@ -7,11 +7,24 @@
 
 import UIKit
 
+struct K {
+    /// Больше ли экран 812  iPhone 11... или iPhone SE
+    /// - Returns: CGFloat 110 or 90
+    static func heigh() -> CGFloat {
+        switch UIScreen.main.bounds.height {
+        case 812...:
+            return 105.0
+        default:
+            return 75.0
+        }
+    }
+}
+
 final class CustomNavigationView: UIView {
     // MARK: - Private properties
     private struct Drawing {
         static let screenWidth: CGFloat = UIScreen.main.bounds.width
-        static let height: CGFloat = 110.0
+        static let height: CGFloat = K.heigh()
         static let padding: CGFloat = 12.0
         static let backgroundColor: UIColor = .systemBlue
         static let fontSize: CGFloat = 22.0
