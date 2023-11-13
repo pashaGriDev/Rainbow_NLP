@@ -22,6 +22,7 @@
 		10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */; };
 		10CB8F152B01B98400CFC8D6 /* CustomNavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */; };
 		10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */; };
+		10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */; };
 		373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A852B01472800E4EE27 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 		10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarButton.swift; sourceTree = "<group>"; };
 		10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
+		10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController2.swift; sourceTree = "<group>"; };
 		373D2A852B01472800E4EE27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 				10CB8F112B01B93C00CFC8D6 /* Components */,
 				10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */,
 				10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */,
+				10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */,
 			);
 			path = TestModule;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			files = (
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				10CB8F012B0150BA00CFC8D6 /* MainView.swift in Sources */,
+				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
