@@ -43,7 +43,7 @@ final class SettingsViewController: BaseViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitle(text: "Settings")
+        setNavigationTitle = "Settings"
         view.backgroundColor = .lightGray
         view.addSubview(collectionView)
         view.addSubview(restoreDefaultsButton)
