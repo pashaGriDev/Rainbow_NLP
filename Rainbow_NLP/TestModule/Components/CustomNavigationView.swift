@@ -15,6 +15,7 @@ final class CustomNavigationView: UIView {
         static let padding: CGFloat = 12.0
         static let backgroundColor: UIColor = .systemBlue
         static let fontSize: CGFloat = 22.0
+        static let buttonHeight: CGFloat = 50.0
     }
     
     // MARK: - Public properties
@@ -50,7 +51,7 @@ final class CustomNavigationView: UIView {
         }
         
         NSLayoutConstraint.activate([
-            backButton.widthAnchor.constraint(equalToConstant: 50),
+            backButton.widthAnchor.constraint(equalToConstant: Drawing.buttonHeight),
             backButton.heightAnchor.constraint(equalTo: backButton.widthAnchor),
             backButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Drawing.padding),
             backButton.bottomAnchor.constraint(equalTo: bottomAnchor),
