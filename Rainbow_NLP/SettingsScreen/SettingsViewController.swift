@@ -9,15 +9,20 @@ import UIKit
 
 final class SettingsViewController: BaseViewController {
     
-//    private let navigationBarView = CustomNavigationView()
+    var parameters: [Parameter] = [
+        Parameter(name: "Game time, sec", defaultValue: Float(10), type: .sliderCell, minValue: 2, maxValue: 60),
+        Parameter(name: "Change speed, sec", defaultValue: Float(2), type: .sliderCell, minValue: 1, maxValue: 5),
+        Parameter(name: "Enable layer", defaultValue: true, type: .switchCell, minValue: nil, maxValue: nil),
+        Parameter(name: "Randon word position", defaultValue: false, type: .switchCell, minValue: nil, maxValue: nil)
+    ]
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SliderCell.self, forCellWithReuseIdentifier: "SliderCollectionViewCell")
-        collectionView.register(SwitchCell.self, forCellWithReuseIdentifier: "SwitchCollectionViewCell")
+        collectionView.register(SliderCell.self, forCellWithReuseIdentifier: "SliderCell")
+        collectionView.register(SwitchCell.self, forCellWithReuseIdentifier: "SwitchCell")
         collectionView.backgroundColor = .lightGray
         return collectionView
     }()
@@ -49,7 +54,6 @@ final class SettingsViewController: BaseViewController {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor , constant: 16),
-//            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             collectionView.bottomAnchor.constraint(equalTo: restoreDefaultsButton.topAnchor, constant: -16),
@@ -62,31 +66,56 @@ final class SettingsViewController: BaseViewController {
     }
     
     @objc private func restoreDefaultsButtonTapped() {
-        // Add your code to restore the default settings of the app
-    }
-}
-
-extension SettingsViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Return the number of settings you want to display
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item % 2 == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCollectionViewCell", for: indexPath) as! SliderCell
-            // Configure the cell with label, slider, and value label
-            cell.configure(with: "Parameter \(indexPath.item)", minValue: 1, maxValue: 60, defaultValue: 10)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwitchCollectionViewCell", for: indexPath) as! SwitchCell
-            // Configure the cell with label and switch
-            cell.configure(with: "Parameter \(indexPath.item)", isOn: true)
-            return cell
+        for (index, parameter) in parameters.enumerated() {
+            if let sliderCell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SliderCell {
+                sliderCell.configure(with: parameter)
+            } else if let switchCell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SwitchCell {
+                switchCell.configure(with: parameter)
+            }
         }
     }
     
+    override func backButtonAction(_ sender: UIButton) {
+        super.backButtonAction(sender)
+        print("back to main screen")
+    }
+}
+
+extension SettingsViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        parameters.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let parameter = parameters[indexPath.item]
+        
+        switch parameter.type {
+        case .sliderCell:
+            let sliderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
+            sliderCell.configure(with: parameter)
+            
+            return sliderCell
+        case .switchCell:
+            let switchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            switchCell.configure(with: parameter)
+            return switchCell
+        }
+    }
+}
+
+extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // Return the desired size for each cell
         return CGSize(width: collectionView.bounds.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        // Return the minimum line spacing between cells
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        // Return the content inset for the section
+        return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     }
 }

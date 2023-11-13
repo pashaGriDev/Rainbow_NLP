@@ -14,7 +14,7 @@ class SliderCell: UICollectionViewCell {
         return label
     }()
     
-    private let slider: UISlider = {
+    let slider: UISlider = {
         let slider = UISlider()
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
@@ -67,16 +67,16 @@ class SliderCell: UICollectionViewCell {
         valueLabel.text = "\(Int(value))"
     }
     
-    func configure(with name: String, minValue: Float, maxValue: Float, defaultValue: Float) {
-        self.minValue = minValue
-        self.maxValue = maxValue
-        self.defaultValue = defaultValue
+    func configure(with parameter: Parameter) {
+        nameLabel.text = parameter.name
         
-        
-        nameLabel.text = name
-        slider.minimumValue = minValue
-        slider.maximumValue = maxValue
-        slider.value = defaultValue
-        valueLabel.text = "\(Int(defaultValue))"
+        if let minValue = parameter.minValue, let maxValue = parameter.maxValue {
+            slider.minimumValue = minValue
+            slider.maximumValue = maxValue
+            
+            slider.value = (parameter.defaultValue as? Float) ?? minValue
+            
+            valueLabel.text = "\(Int(slider.value))"
+        }
     }
 }
