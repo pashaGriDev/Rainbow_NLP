@@ -8,6 +8,7 @@
 import UIKit
 
 class SliderCell: UICollectionViewCell {
+    //MARK: - UI Elements
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -27,13 +28,14 @@ class SliderCell: UICollectionViewCell {
     }()
     
     private var minValue: Float = 0
-    private var maxValue: Float = 60
+    private var maxValue: Float = 0
     private var defaultValue: Float = 0
     
+    //MARK: - LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        layer.cornerRadius = 10
+        layer.cornerRadius = Constants.cornerRadius
         contentView.addSubview(nameLabel)
         contentView.addSubview(slider)
         contentView.addSubview(valueLabel)
@@ -45,37 +47,33 @@ class SliderCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Constraints
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            // nameLabel constraints
-            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding),
             nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            // slider constraints
-            slider.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 16),
-            slider.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -16),
+            slider.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.defaultPadding),
+            slider.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -Constants.defaultPadding),
             slider.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            // valueLabel constraints
-            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding),
             valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
     
+    //MARK: - Private methods
     @objc private func sliderValueChanged() {
         let value = round(slider.value)
         valueLabel.text = "\(Int(value))"
     }
     
+    //MARK: - Cell config
     func configure(with parameter: Parameter) {
         nameLabel.text = parameter.name
         
         if let minValue = parameter.minValue, let maxValue = parameter.maxValue {
             slider.minimumValue = minValue
             slider.maximumValue = maxValue
-            
             slider.value = (parameter.defaultValue as? Float) ?? minValue
-            
             valueLabel.text = "\(Int(slider.value))"
         }
     }

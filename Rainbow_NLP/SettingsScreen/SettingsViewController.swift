@@ -9,6 +9,7 @@ import UIKit
 
 final class SettingsViewController: BaseViewController {
     
+    //MARK: - Settings parameters config
     var parameters: [Parameter] = [
         Parameter(name: "Game time, sec", defaultValue: Float(10), type: .sliderCell, minValue: 2, maxValue: 60),
         Parameter(name: "Change speed, sec", defaultValue: Float(2), type: .sliderCell, minValue: 1, maxValue: 5),
@@ -16,6 +17,7 @@ final class SettingsViewController: BaseViewController {
         Parameter(name: "Randon word position", defaultValue: false, type: .switchCell, minValue: nil, maxValue: nil)
     ]
     
+    //MARK: - UI Elements
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -33,16 +35,15 @@ final class SettingsViewController: BaseViewController {
         button.setTitle("Restore Defaults", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .red
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = Constants.cornerRadius
         button.addTarget(self, action: #selector(restoreDefaultsButtonTapped), for: .touchUpInside)
         return button
     }()
     
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setTitle(text: "Settings")
-        
         view.backgroundColor = .lightGray
         view.addSubview(collectionView)
         view.addSubview(restoreDefaultsButton)
@@ -51,20 +52,7 @@ final class SettingsViewController: BaseViewController {
         collectionView.dataSource = self
     }
     
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor , constant: 16),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            collectionView.bottomAnchor.constraint(equalTo: restoreDefaultsButton.topAnchor, constant: -16),
-            
-            restoreDefaultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            restoreDefaultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
-            restoreDefaultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            restoreDefaultsButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
+    //MARK: - Methods
     @objc private func restoreDefaultsButtonTapped() {
         for (index, parameter) in parameters.enumerated() {
             if let sliderCell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SliderCell {
@@ -81,6 +69,7 @@ final class SettingsViewController: BaseViewController {
     }
 }
 
+//MARK: - UICollectionViewDataSource
 extension SettingsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         parameters.count
@@ -103,19 +92,37 @@ extension SettingsViewController: UICollectionViewDataSource {
     }
 }
 
+//MARK: - UICollectionViewDelegateFlowLayout
 extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // Return the desired size for each cell
-        return CGSize(width: collectionView.bounds.width, height: 50)
+        return CGSize(width: collectionView.bounds.width, height: Constants.basicHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         // Return the minimum line spacing between cells
-        return 10
+        return Constants.cellSpacing
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         // Return the content inset for the section
         return UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+    }
+}
+
+//MARK: - Constraints
+extension SettingsViewController {
+    private func setupConstraints() {
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor , constant: Constants.defaultPadding),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.mediumPadding),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.mediumPadding),
+            collectionView.bottomAnchor.constraint(equalTo: restoreDefaultsButton.topAnchor, constant: -Constants.defaultPadding),
+            
+            restoreDefaultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.largePadding),
+            restoreDefaultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.largePadding),
+            restoreDefaultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.defaultPadding),
+            restoreDefaultsButton.heightAnchor.constraint(equalToConstant: Constants.basicHeight)
+        ])
     }
 }
