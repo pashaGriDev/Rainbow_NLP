@@ -7,31 +7,72 @@
 
 import UIKit
 
+//MARK: - Constants
+private struct Constants {
+    static let cornerRadius: CGFloat = 10
+    static let defaultPadding: CGFloat = 16
+    static let mediumPadding: CGFloat = 20
+    static let largePadding: CGFloat = 50
+    static let basicHeight: CGFloat = 50
+    static let cellSpacing: CGFloat = 10
+}
+
 final class SettingsViewController: BaseViewController {
     
     //MARK: - Settings parameters config
     var parameters: [Parameter] = [
-        Parameter(name: "Game time, sec", defaultValue: Float(10), type: .sliderCell, minValue: 2, maxValue: 60),
-        Parameter(name: "Change speed, sec", defaultValue: Float(2), type: .sliderCell, minValue: 1, maxValue: 5),
-        Parameter(name: "Enable layer", defaultValue: true, type: .switchCell, minValue: nil, maxValue: nil),
-        Parameter(name: "Randon word position", defaultValue: false, type: .switchCell, minValue: nil, maxValue: nil)
+        Parameter(
+            name: "Game time, sec",
+            defaultValue: Float(10),
+            type: .sliderCell,
+            minValue: 2,
+            maxValue: 60
+        ),
+        Parameter(
+            name: "Change speed, sec",
+            defaultValue: Float(2),
+            type: .sliderCell,
+            minValue: 1,
+            maxValue: 5
+        ),
+        Parameter(
+            name: "Enable layer",
+            defaultValue: true,
+            type: .switchCell,
+            minValue: nil,
+            maxValue: nil
+        ),
+        Parameter(
+            name: "Random word position",
+            defaultValue: false,
+            type: .switchCell,
+            minValue: nil,
+            maxValue: nil
+        )
     ]
     
     //MARK: - UI Elements
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(SliderCell.self, forCellWithReuseIdentifier: "SliderCell")
-        collectionView.register(SwitchCell.self, forCellWithReuseIdentifier: "SwitchCell")
+        let collectionView = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: layout
+        )
+        collectionView.register(
+            SliderCell.self,
+            forCellWithReuseIdentifier: String(describing: SliderCell.self)
+        )
+        collectionView.register(
+            SwitchCell.self,
+            forCellWithReuseIdentifier: String(describing: SwitchCell.self)
+        )
         collectionView.backgroundColor = .lightGray
         return collectionView
     }()
     
     private lazy var restoreDefaultsButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Restore Defaults", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .red
@@ -43,13 +84,9 @@ final class SettingsViewController: BaseViewController {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationTitle = "Settings"
-        view.backgroundColor = .lightGray
-        view.addSubview(collectionView)
-        view.addSubview(restoreDefaultsButton)
+        setViews()
         setupConstraints()
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        setDelegates()
     }
     
     //MARK: - Methods
@@ -61,6 +98,18 @@ final class SettingsViewController: BaseViewController {
                 switchCell.configure(with: parameter)
             }
         }
+    }
+    
+    private func setViews() {
+        setNavigationTitle = "Settings"
+        view.backgroundColor = .lightGray
+        view.addSubview(collectionView, restoreDefaultsButton)
+        isHiddenPauseButton = true
+    }
+    
+    private func setDelegates() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
     
     override func backButtonAction(_ sender: UIButton) {
@@ -80,12 +129,18 @@ extension SettingsViewController: UICollectionViewDataSource {
         
         switch parameter.type {
         case .sliderCell:
-            let sliderCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCell", for: indexPath) as! SliderCell
+            let sliderCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: SliderCell.self),
+                for: indexPath
+            ) as! SliderCell
             sliderCell.configure(with: parameter)
             
             return sliderCell
         case .switchCell:
-            let switchCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            let switchCell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: SwitchCell.self),
+                for: indexPath
+            ) as! SwitchCell
             switchCell.configure(with: parameter)
             return switchCell
         }
@@ -113,6 +168,10 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
 //MARK: - Constraints
 extension SettingsViewController {
     private func setupConstraints() {
+        [collectionView, restoreDefaultsButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor , constant: Constants.defaultPadding),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.mediumPadding),
