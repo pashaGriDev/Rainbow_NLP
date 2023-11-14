@@ -23,9 +23,9 @@ class CustomNavBarButton: UIButton {
 
         switch style {
         case .back:
-            setImage(UIImage(named: "arrowLeft"), for: .normal)
+            setImage(UIImage.arrowLeft, for: .normal)
         case .pause:
-            setImage(UIImage(named: "pause"), for: .normal)
+            setImage(UIImage.pause, for: .normal)
         }
     }
     
