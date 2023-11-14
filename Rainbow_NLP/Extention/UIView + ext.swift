@@ -30,4 +30,9 @@ extension UIView {
         self.layer.shadowOffset = .init(width: 0, height: 5)
         self.layer.shadowOpacity = 0.5
     }
+    
+    static func makeLabel() -> UILabel {
+        let label = UILabel()
+        return label
+    }
 }
