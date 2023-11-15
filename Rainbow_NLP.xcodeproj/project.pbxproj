@@ -34,8 +34,6 @@
 /* Begin PBXFileReference section */
 		1056B64A2B052B680092A8E2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1056B64C2B052B6E0092A8E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		1056B64E2B052B770092A8E2 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		1056B64F2B052B7B0092A8E2 /* CormorantInfant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantInfant-Regular.ttf"; sourceTree = "<group>"; };
 		1078D1B02B0116CD00A265D0 /* Rainbow_NLP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow_NLP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1078D1B32B0116CD00A265D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,8 +109,6 @@
 				1078D1B72B0116CD00A265D0 /* ViewController.swift */,
 				1056B64A2B052B680092A8E2 /* MainView.swift */,
 				1056B64C2B052B6E0092A8E2 /* MainViewController.swift */,
-				1056B64E2B052B770092A8E2 /* SF-Pro-Display-Regular.otf */,
-				1056B64F2B052B7B0092A8E2 /* CormorantInfant-Regular.ttf */,
 				1078D1BC2B0116CE00A265D0 /* Assets.xcassets */,
 				1078D1BE2B0116CE00A265D0 /* LaunchScreen.storyboard */,
 				1078D1C12B0116CE00A265D0 /* Info.plist */,
