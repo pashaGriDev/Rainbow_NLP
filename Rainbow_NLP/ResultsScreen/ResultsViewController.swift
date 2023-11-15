@@ -9,80 +9,79 @@ import UIKit
 
 class ResultsViewController: BaseViewController {
     
-    var collectionView: UICollectionView!
-    let button = UIButton()
-    let gameStatistics = GameStatistics.getMocResult()
+    var gameStatistics = GameStatistics.getMocResult()
     
-//    lazy var button2: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("Очистить статистику", for: .normal)
-//        button.layer.cornerRadius = 12
-//        button.setTitleColor(.white, for: .normal)
-//        button.backgroundColor = #colorLiteral(red: 0.8707633615, green: 0.1323380172, blue: 0.1346192956, alpha: 1)
-//        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-//        return button
-//    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupCollectionView()
-        setupButton()
-    }
-    
-    func setupCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: setupFlowLayout())
-        
-        view.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-    
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        collectionView.dataSource = self
-        
-        collectionView.register(ResultsCell.self, forCellWithReuseIdentifier: "\(ResultsCell.self)")
-        
-        collectionView.backgroundColor = .lightGray
-    }
-    
-    func setupFlowLayout() -> UICollectionViewFlowLayout {
+    //MARK: - UI Elements
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.sectionInset = .init(top: 20, left: 0, bottom: 0, right: 0)
         layout.itemSize = .init(width: 311.2, height: 85)
         layout.minimumLineSpacing = 20
-        return layout
-    }
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(ResultsCell.self, forCellWithReuseIdentifier: "\(ResultsCell.self)")
+        collectionView.backgroundColor = .lightGray
+        return collectionView
+    }()
     
-    func setupButton() {
-        view.addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 268).isActive = true
-        
+    lazy var cleanStatisticsButton: UIButton = {
+        let button = UIButton()
         button.setTitle("Очистить статистику", for: .normal)
         button.layer.cornerRadius = 12
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.8707633615, green: 0.1323380172, blue: 0.1346192956, alpha: 1)
-        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.addTarget(self, action: #selector(cleanStatisticsButtonAction), for: .touchUpInside)
+        return button
+    }()
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setViews()
+        setupConstraints()
+        collectionView.dataSource = self
     }
     
-    @objc func buttonAction() {
+    //MARK: - Methods
+    @objc func cleanStatisticsButtonAction() {
+        gameStatistics = []
         dismiss(animated: true)
+        
     }
     
+    private func setViews() {
+        setNavigationTitle = "Статистика"
+        view.backgroundColor = .lightGray
+        view.addSubview(collectionView, cleanStatisticsButton)
+        isHiddenPauseButton = true
+    }
     
+    override func backButtonAction(_ sender: UIButton) {
+        super.backButtonAction(sender)
+        print("back to main screen")
+    }
     
+    //MARK: - Constraints
+    private func setupConstraints(){
+        [collectionView, cleanStatisticsButton].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: K.heigh()),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            cleanStatisticsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cleanStatisticsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            cleanStatisticsButton.heightAnchor.constraint(equalToConstant: 63),
+            cleanStatisticsButton.widthAnchor.constraint(equalToConstant: 268),
+        ])
+    }
     
 }
-
 
 // MARK: UICollectionViewDataSource
 extension ResultsViewController: UICollectionViewDataSource {
