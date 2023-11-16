@@ -24,6 +24,11 @@ class CustomCell: UICollectionViewCell {
         label.frame = bounds
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        print(#function, "\(label.text ?? "no text")")
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
