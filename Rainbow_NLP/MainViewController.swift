@@ -15,9 +15,35 @@ class MainViewController: UIViewController {
         super.loadView()
         view = mainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
     }
+    
+    func setup() {
+        mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
+        mainView.resultButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
+        mainView.settingButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
+    }
+}
 
+
+@objc extension MainViewController {
+    func newGameButtonTapped () {
+        print ("Go to new game")
+    }
+    
+    func rulesButtonTapped (_ sender: UIButton) {
+        print ("Go to rules")
+    }
+    
+    func settingsButtonTapped (_ sender: UIButton) {
+        print ("Go to settings")
+    }
+    
+    func statsButtonTapped (_ sender: UIButton) {
+        print ("Go to stats")
+    }
 }

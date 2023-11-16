@@ -25,21 +25,21 @@ class ResultsViewController: BaseViewController {
         return collectionView
     }()
     
-    lazy var cleanStatisticsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Очистить статистику", for: .normal)
-        button.layer.cornerRadius = 12
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.8707633615, green: 0.1323380172, blue: 0.1346192956, alpha: 1)
-        button.addTarget(self, action: #selector(cleanStatisticsButtonAction), for: .touchUpInside)
-        return button
-    }()
+    let cleanStatisticsButton: UIButton = .makeButton(
+        text: "Очистить статистику",
+        and: .newGameButtonColor
+    )
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
         setupConstraints()
+        cleanStatisticsButton.addTarget(
+            self,
+            action: #selector(cleanStatisticsButtonAction),
+            for: .touchUpInside
+        )
         collectionView.dataSource = self
     }
     
