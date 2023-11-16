@@ -59,7 +59,7 @@ class ResultsViewController: BaseViewController {
     
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
-        print("back to main screen")
+        navigationController?.popViewController(animated: true)
     }
     
     //MARK: - Constraints
