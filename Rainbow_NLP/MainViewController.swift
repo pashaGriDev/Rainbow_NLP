@@ -31,12 +31,16 @@ class MainViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = mainView
+        
                 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        
+        mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
+        mainView.statsButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
+        mainView.settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
+
         
         
         

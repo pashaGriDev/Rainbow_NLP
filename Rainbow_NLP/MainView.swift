@@ -37,7 +37,7 @@ class MainView: UIView {
     let rainbowLabel: UILabel = {
         
         let rainbow = UILabel()
-       
+        
         rainbow.font = UIFont(name: "CormorantInfant-Regular", size: 64)
         rainbow.textColor = UIColor(red: 0.135, green: 0.169, blue: 0.153, alpha: 1)
         rainbow.textAlignment = .center
@@ -54,7 +54,6 @@ class MainView: UIView {
         button.layer.cornerRadius = 10
         button.setTitle("Новая игра", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(MainView.self, action: #selector(MainViewController.newGameButtonTapped), for: .touchUpInside)
         return button
         
     }()
@@ -67,7 +66,6 @@ class MainView: UIView {
         button.layer.cornerRadius = 10
         button.setTitle("Статистика", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
 
         return button
         
@@ -79,7 +77,6 @@ class MainView: UIView {
         button.setImage(UIImage(named: "Settings button"), for: .normal)
         button.tintColor = UIColor(red: 0.43, green: 0.04, blue: 0.44, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-       // button.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -90,7 +87,6 @@ class MainView: UIView {
         button.setImage(UIImage(named: "Rules button"), for: .normal)
         button.tintColor = UIColor(red: 0.43, green: 0.04, blue: 0.44, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
-        //button.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
 
         return button
     }()
@@ -115,12 +111,13 @@ class MainView: UIView {
         
         super.layoutSubviews()
         
-        
+        // картинка радуги
         NSLayoutConstraint.activate([rainbowImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 77),
                                      rainbowImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                                     rainbowImage.widthAnchor.constraint(equalToConstant: 302),
                                     rainbowImage.heightAnchor.constraint(equalToConstant: 150)])
         
+
         // новая игра
         NSLayoutConstraint.activate([newGameButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                                      newGameButton.widthAnchor.constraint(equalToConstant: 274),
@@ -159,6 +156,7 @@ class MainView: UIView {
         // надпсь нлп игра
         NSLayoutConstraint.activate([nlpLabel.widthAnchor.constraint(equalToConstant: 206),
                                      nlpLabel.heightAnchor.constraint(equalToConstant: 71),
+                                     nlpLabel.bottomAnchor.constraint(equalTo: rainbowLabel.bottomAnchor, constant: -66),
                                      nlpLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 81),
                                      nlpLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 237)
         ])
