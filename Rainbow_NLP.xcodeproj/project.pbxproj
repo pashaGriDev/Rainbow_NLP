@@ -26,7 +26,6 @@
 		10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */; };
 		2CD5D0072B05314A00B37157 /* CormorantInfant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD5D0062B05314A00B37157 /* CormorantInfant-Regular.ttf */; };
 		2CD5D0092B05316200B37157 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD5D0082B05316100B37157 /* SF-Pro-Display-Regular.otf */; };
-		2CD5D0132B067BCA00B37157 /* MainViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD5D0122B067BCA00B37157 /* MainViewElements.swift */; };
 		370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370CD4C02B02914A00C2E102 /* SettingsCellModel.swift */; };
 		373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A852B01472800E4EE27 /* SettingsViewController.swift */; };
 		373D2A892B02796200E4EE27 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A882B02796200E4EE27 /* SliderCell.swift */; };
@@ -58,7 +57,6 @@
 		10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController2.swift; sourceTree = "<group>"; };
 		2CD5D0062B05314A00B37157 /* CormorantInfant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantInfant-Regular.ttf"; sourceTree = "<group>"; };
 		2CD5D0082B05316100B37157 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
-		2CD5D0122B067BCA00B37157 /* MainViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewElements.swift; sourceTree = "<group>"; };
 		370CD4C02B02914A00C2E102 /* SettingsCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellModel.swift; sourceTree = "<group>"; };
 		373D2A852B01472800E4EE27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		373D2A882B02796200E4EE27 /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */,
-				2CD5D0122B067BCA00B37157 /* MainViewElements.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -269,7 +266,6 @@
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				373D2A892B02796200E4EE27 /* SliderCell.swift in Sources */,
 				92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */,
-				2CD5D0132B067BCA00B37157 /* MainViewElements.swift in Sources */,
 				370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */,
 				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
