@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B082B0690B30021EE21 /* UIColor + ext.swift */; };
+		101F8B0B2B069A520021EE21 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101F8B0A2B069A520021EE21 /* Storyboard.storyboard */; };
 		101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101FE3B92B058DDC00BBB7FC /* DataManager.swift */; };
 		1056B64B2B052B680092A8E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64A2B052B680092A8E2 /* MainView.swift */; };
 		1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64C2B052B6E0092A8E2 /* MainViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		101F8B082B0690B30021EE21 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
+		101F8B0A2B069A520021EE21 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		101FE3B92B058DDC00BBB7FC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1056B64A2B052B680092A8E2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1056B64C2B052B6E0092A8E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				1078D1C12B0116CE00A265D0 /* Info.plist */,
 				373D2A872B0278D600E4EE27 /* SettingsScreen */,
 				92B846892B03D375008286D8 /* ResultsScreen */,
+				101F8B0A2B069A520021EE21 /* Storyboard.storyboard */,
 			);
 			path = Rainbow_NLP;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				1078D1BD2B0116CE00A265D0 /* Assets.xcassets in Resources */,
 				2CD5D0092B05316200B37157 /* SF-Pro-Display-Regular.otf in Resources */,
 				2CD5D0072B05314A00B37157 /* CormorantInfant-Regular.ttf in Resources */,
+				101F8B0B2B069A520021EE21 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

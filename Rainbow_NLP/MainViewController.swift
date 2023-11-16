@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     
     func setup() {
         mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
-        mainView.statsButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
+        mainView.resultButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
         mainView.settingButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
     }
