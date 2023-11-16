@@ -8,7 +8,13 @@
 import UIKit
 
 final class TestingViewController: BaseViewController {
-
+    
+    let dataManager: DataManager = DataManagerImp()
+    let dataSource: [MocUser] = [
+        .init(name: "Bob", age: 10),
+        .init(name: "Jon", age: 44)
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationTitle = "Test view"
@@ -16,12 +22,14 @@ final class TestingViewController: BaseViewController {
     
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
-        
+        print("save")
+        dataManager.save(dataSource, by: .userResultData)
     }
     
     override func pauseButtonAction(_ sender: UIButton) {
         super.pauseButtonAction(sender)
-        let vc = TestingViewController2()
-        navigationController?.pushViewController(vc, animated: true)
+        print("load")
+        let userData = dataManager.load(by: .userResultData)
+        print("\(String(describing: userData))")
     }
 }
