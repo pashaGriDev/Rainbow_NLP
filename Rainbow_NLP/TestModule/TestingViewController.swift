@@ -9,10 +9,10 @@ import UIKit
 
 final class TestingViewController: BaseViewController {
     
-    let dataManager: DataManager = DataManagerImp()
+    let dataManager = DataManager<[MocUser]>()
     let dataSource: [MocUser] = [
-        .init(name: "Bob", age: 10),
-        .init(name: "Jon", age: 44)
+        .init(name: "Cat", age: 1, raund: "first"),
+        .init(name: "Dog", age: 0, raund: "second")
     ]
     
     override func viewDidLoad() {
@@ -23,13 +23,27 @@ final class TestingViewController: BaseViewController {
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
         print("save")
-        dataManager.save(dataSource, by: .userResultData)
+        do {
+            try dataManager.save(dataSource, by: .userResultData)
+        } catch DataManagerError.failedEncoded(let message) {
+            print(message)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     override func pauseButtonAction(_ sender: UIButton) {
         super.pauseButtonAction(sender)
         print("load")
-        let userData = dataManager.load(by: .userResultData)
-        print("\(String(describing: userData))")
+        do {
+            let userData = try dataManager.load(by: .userResultData)
+            print("\(String(describing: userData))")
+        } catch DataManagerError.failedLoading(let message) {
+            print(message)
+        } catch DataManagerError.failedDecoded(let message) {
+            print(message)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

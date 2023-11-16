@@ -10,15 +10,11 @@ import Foundation
 struct MocUser: Codable {
     var name: String
     var age: Int
+    var raund: String
 }
 
-// some Codable or <T>
-protocol DataManager {
-    func save(_ data: [MocUser], by key: DataManagerImp.Keys)
-    func load(by key: DataManagerImp.Keys) -> [MocUser]
-}
-
-class DataManagerImp: DataManager {
+final class DataManager<T: Codable> {
+    
     // MARK: - Keys for UserDefaults
     enum Keys: String {
         case userSettingData
@@ -39,24 +35,28 @@ class DataManagerImp: DataManager {
     }
     
     // MARK: - Public Methods
-    func save(_ data: [MocUser], by key: Keys) {
+    func save(_ data: T, by key: Keys) throws {
         guard let encodeData = try? encoder.encode(data) else {
-            print("Failed encoded data, try again.")
-            return
+            throw DataManagerError.failedEncoded("Failed encoded data, try again.")
         }
         UserDefaults.standard.set(encodeData, forKey: key.rawValue)
     }
     
-    func load(by key: Keys) -> [MocUser] {
+    func load(by key: Keys) throws -> T {
         guard let data = UserDefaults.standard.object(forKey: key.rawValue) as? Data else {
-            print("Failed loading data, try again.")
-            return []
+            throw DataManagerError.failedLoading("Failed loading data, try again.")
         }
         
-        guard let decodedData = try? decoder.decode([MocUser].self, from: data) else {
-            print("Failed decoded data, try again.")
-            return []
+        guard let decodedData = try? decoder.decode(T.self, from: data) else {
+            throw DataManagerError.failedDecoded("Failed decoded data, try again.")
         }
         return decodedData
     }
+}
+
+// MARK: - DataManagerError
+enum DataManagerError: Error {
+    case failedEncoded(String)
+    case failedDecoded(String)
+    case failedLoading(String)
 }
