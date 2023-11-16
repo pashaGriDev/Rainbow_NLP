@@ -26,7 +26,7 @@ class ResultsViewController: BaseViewController {
     }()
     
     lazy var cleanStatisticsButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("Очистить статистику", for: .normal)
         button.layer.cornerRadius = 12
         button.setTitleColor(.white, for: .normal)
@@ -46,7 +46,7 @@ class ResultsViewController: BaseViewController {
     //MARK: - Methods
     @objc func cleanStatisticsButtonAction() {
         gameStatistics = []
-        dismiss(animated: true)
+        collectionView.reloadData()
         
     }
     
@@ -70,7 +70,7 @@ class ResultsViewController: BaseViewController {
         
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: K.heigh()),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
