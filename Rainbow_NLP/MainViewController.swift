@@ -12,8 +12,6 @@ class MainViewController: UIViewController {
     
     let mainView = MainView()
     
-
-
     @objc func newGameButtonTapped () {
         print ("Go to new game")
         
@@ -32,7 +30,7 @@ class MainViewController: UIViewController {
         super.loadView()
         view = mainView
         
-                
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,24 +38,8 @@ class MainViewController: UIViewController {
         mainView.statsButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
         mainView.settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
-
         
-        
-        
-        
-       
-        
-        // радуга картинка расположение
-        
-        
-        // на завтра
-        // разобраться с MainView и MainViewController
-        // разобраться с расстоянием между леблами
-        // выянить почему дебаггер ругается на констрейнты
-        
-        
-     
     }
-
+    
 }
 
