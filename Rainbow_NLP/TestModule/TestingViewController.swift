@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct MocUser: Codable {
+    var name: String
+    var age: Int
+    var raund: String
+}
+
 final class TestingViewController: BaseViewController {
     
     let dataManager = DataManager<[MocUser]>()

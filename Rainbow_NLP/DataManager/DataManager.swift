@@ -7,12 +7,6 @@
 
 import Foundation
 
-struct MocUser: Codable {
-    var name: String
-    var age: Int
-    var raund: String
-}
-
 final class DataManager<T: Codable> {
     
     // MARK: - Keys for UserDefaults
