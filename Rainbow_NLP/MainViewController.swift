@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class MainViewController: UIViewController {
     
     let mainView = MainView()
@@ -34,14 +33,16 @@ class MainViewController: UIViewController {
 @objc extension MainViewController {
     func newGameButtonTapped () {
         print ("Go to new game")
-        
     }
+    
     func rulesButtonTapped (_ sender: UIButton) {
         print ("Go to rules")
     }
+    
     func settingsButtonTapped (_ sender: UIButton) {
         print ("Go to settings")
     }
+    
     func statsButtonTapped (_ sender: UIButton) {
         print ("Go to stats")
     }

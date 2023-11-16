@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B082B0690B30021EE21 /* UIColor + ext.swift */; };
 		101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101FE3B92B058DDC00BBB7FC /* DataManager.swift */; };
 		1056B64B2B052B680092A8E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64A2B052B680092A8E2 /* MainView.swift */; };
 		1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64C2B052B6E0092A8E2 /* MainViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101F8B082B0690B30021EE21 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
 		101FE3B92B058DDC00BBB7FC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1056B64A2B052B680092A8E2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1056B64C2B052B6E0092A8E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */,
+				101F8B082B0690B30021EE21 /* UIColor + ext.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */,
 				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
+				101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */,
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
