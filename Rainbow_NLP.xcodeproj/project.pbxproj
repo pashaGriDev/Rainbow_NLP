@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B082B0690B30021EE21 /* UIColor + ext.swift */; };
-		101F8B0B2B069A520021EE21 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 101F8B0A2B069A520021EE21 /* Storyboard.storyboard */; };
+		101F8B0D2B069DED0021EE21 /* UIButton + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B0C2B069DED0021EE21 /* UIButton + ext.swift */; };
+		101F8B0F2B06A6BA0021EE21 /* UILabel + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B0E2B06A6BA0021EE21 /* UILabel + ext.swift */; };
 		101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101FE3B92B058DDC00BBB7FC /* DataManager.swift */; };
 		1056B64B2B052B680092A8E2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64A2B052B680092A8E2 /* MainView.swift */; };
 		1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056B64C2B052B6E0092A8E2 /* MainViewController.swift */; };
@@ -23,7 +24,7 @@
 		10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */; };
 		10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */; };
 		10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */; };
-		10CB8F152B01B98400CFC8D6 /* CustomNavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */; };
+		10CB8F152B01B98400CFC8D6 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F142B01B98400CFC8D6 /* CustomButton.swift */; };
 		10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */; };
 		10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */; };
 		2CD5D0072B05314A00B37157 /* CormorantInfant-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CD5D0062B05314A00B37157 /* CormorantInfant-Regular.ttf */; };
@@ -38,7 +39,8 @@
 
 /* Begin PBXFileReference section */
 		101F8B082B0690B30021EE21 /* UIColor + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + ext.swift"; sourceTree = "<group>"; };
-		101F8B0A2B069A520021EE21 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		101F8B0C2B069DED0021EE21 /* UIButton + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + ext.swift"; sourceTree = "<group>"; };
+		101F8B0E2B06A6BA0021EE21 /* UILabel + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + ext.swift"; sourceTree = "<group>"; };
 		101FE3B92B058DDC00BBB7FC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1056B64A2B052B680092A8E2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1056B64C2B052B6E0092A8E2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 		10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		10CB8F0F2B01B91300CFC8D6 /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
-		10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarButton.swift; sourceTree = "<group>"; };
+		10CB8F142B01B98400CFC8D6 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + ext.swift"; sourceTree = "<group>"; };
 		10CB8F192B01C48B00CFC8D6 /* TestingViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController2.swift; sourceTree = "<group>"; };
 		2CD5D0062B05314A00B37157 /* CormorantInfant-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CormorantInfant-Regular.ttf"; sourceTree = "<group>"; };
@@ -133,7 +135,6 @@
 				1078D1C12B0116CE00A265D0 /* Info.plist */,
 				373D2A872B0278D600E4EE27 /* SettingsScreen */,
 				92B846892B03D375008286D8 /* ResultsScreen */,
-				101F8B0A2B069A520021EE21 /* Storyboard.storyboard */,
 			);
 			path = Rainbow_NLP;
 			sourceTree = "<group>";
@@ -162,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				10CB8F122B01B95C00CFC8D6 /* CustomNavigationView.swift */,
-				10CB8F142B01B98400CFC8D6 /* CustomNavBarButton.swift */,
+				10CB8F142B01B98400CFC8D6 /* CustomButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -172,6 +173,8 @@
 			children = (
 				10CB8F172B01B9C900CFC8D6 /* UIView + ext.swift */,
 				101F8B082B0690B30021EE21 /* UIColor + ext.swift */,
+				101F8B0C2B069DED0021EE21 /* UIButton + ext.swift */,
+				101F8B0E2B06A6BA0021EE21 /* UILabel + ext.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -259,7 +262,6 @@
 				1078D1BD2B0116CE00A265D0 /* Assets.xcassets in Resources */,
 				2CD5D0092B05316200B37157 /* SF-Pro-Display-Regular.otf in Resources */,
 				2CD5D0072B05314A00B37157 /* CormorantInfant-Regular.ttf in Resources */,
-				101F8B0B2B069A520021EE21 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,10 +275,12 @@
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				373D2A892B02796200E4EE27 /* SliderCell.swift in Sources */,
 				92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */,
+				101F8B0F2B06A6BA0021EE21 /* UILabel + ext.swift in Sources */,
 				370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */,
 				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
 				101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */,
+				101F8B0D2B069DED0021EE21 /* UIButton + ext.swift in Sources */,
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
@@ -284,7 +288,7 @@
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
 				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
 				1056B64B2B052B680092A8E2 /* MainView.swift in Sources */,
-				10CB8F152B01B98400CFC8D6 /* CustomNavBarButton.swift in Sources */,
+				10CB8F152B01B98400CFC8D6 /* CustomButton.swift in Sources */,
 				10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */,
 				10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */,
 				10CB8EFF2B0147DE00CFC8D6 /* Statistics.swift in Sources */,

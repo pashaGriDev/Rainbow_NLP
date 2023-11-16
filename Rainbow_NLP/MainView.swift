@@ -10,26 +10,37 @@ import UIKit
 class MainView: UIView {
     private struct Drawing {
         static let buttonSize: CGFloat = 50.0
+        static let buttonPadding: CGFloat = 50.0
+        static let buttonSpacing: CGFloat = 12.0
     }
     
     // MARK: - Private UI
-    private let nlpLabel = MainView.makeNlpLabel()
     private let rainbowImage = MainView.makeRainbowImage()
-    private let rainbowLabel = MainView.makeRainbowLabel()
+    private let nlpLabel: UILabel = .makeLabel(
+        text: "НЛП игра",
+        color: .black,
+        fontName: .sfProDisplay,
+        and: 36
+    )
+    private let rainbowLabel: UILabel = .makeLabel(
+        text: "Радуга",
+        color: .grayRainbowButton,
+        fontName: .cormorant
+    )
     private lazy var buttonContainer: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [newGameButton, resultButton])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.spacing = 10.0
+        stackView.spacing = Drawing.buttonSpacing
         return stackView
     }()
     
     // MARK: - Public UI
-    let newGameButton = MainView.makeNewGameButton()
-    let settingButton = MainView.makeNewSettingsButton()
-    let resultButton = MainView.makeResultButton()
-    let rulesButton = MainView.makeNewRulesButton()
+    let newGameButton: UIButton = .makeButton(text: "Новая игра", and: .newGameButtonColor)
+    let resultButton: UIButton = .makeButton(text: "Статистика", and: .newStatsButtonColor)
+    let settingButton: CustomButton = .init(style: .setting, color: .downButtons)
+    let rulesButton: CustomButton = .init(style: .rules, color: .downButtons)
     
     // MARK: - init(_:)
     override init(frame: CGRect) {
@@ -83,9 +94,9 @@ class MainView: UIView {
              rainbowLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
              rainbowLabel.topAnchor.constraint(equalTo: nlpLabel.bottomAnchor),
              
-             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor, constant: 10),
-             buttonContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-             buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30),
+             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor),
+             buttonContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Drawing.buttonPadding),
+             buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.buttonPadding),
              buttonContainer.heightAnchor.constraint(equalToConstant: 160),
              
              settingButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
@@ -103,63 +114,12 @@ class MainView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 extension MainView {
     static func makeRainbowImage() -> UIImageView {
         let rainbowView = UIImageView()
         rainbowView.image = UIImage(named: "RainbowImage")
         rainbowView.contentMode = .scaleAspectFit
         return rainbowView
-    }
-    
-    static func makeNlpLabel() -> UILabel {
-        let nlp = UILabel()
-        nlp.font = UIFont(name: "SFProDisplay-Regular", size: 36)
-        nlp.textColor = UIColor.black
-        nlp.textAlignment = .center
-        nlp.text = "НЛП игра"
-        return nlp
-    }
-    
-    static func makeRainbowLabel() -> UILabel {
-        let rainbow = UILabel()
-        rainbow.font = UIFont(name: "CormorantInfant-Regular", size: 64)
-        rainbow.textColor = UIColor.grayRainbowButton
-        rainbow.textAlignment = .center
-        rainbow.text = "Радуга"
-        rainbow.attributedText = NSMutableAttributedString(string: "Радуга", attributes: [NSAttributedString.Key.kern: -0.3])
-        return rainbow
-    }
-    static func makeNewGameButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor.newGameButtonColor
-        button.tintColor = UIColor.white
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont(name: "SFPro-Regular", size: 20)
-        button.setTitle("Новая игра", for: .normal)
-        return button
-    }
-    
-    static func makeResultButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor.newStatsButtonColor
-        button.tintColor = UIColor.white
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont(name: "SFPro-Regular", size: 20)
-        button.setTitle("Статистика", for: .normal)
-        return button
-    }
-    
-    static func makeNewSettingsButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "Settings button"), for: .normal)
-        button.tintColor = UIColor.downButtons
-        return button
-    }
-    
-    static func makeNewRulesButton() -> UIButton {
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "Rules button"), for: .normal)
-        button.tintColor = UIColor.downButtons
-        return button
     }
 }

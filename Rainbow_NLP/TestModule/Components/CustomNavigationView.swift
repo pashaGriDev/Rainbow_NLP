@@ -33,8 +33,8 @@ final class CustomNavigationView: UIView {
     
     // MARK: - Public properties
     let titleLabel = makeTitleLabel()
-    let backButton = CustomNavBarButton(style: .back)
-    let pauseButton = CustomNavBarButton(style: .pause)
+    let backButton = CustomButton(style: .back)
+    let pauseButton = CustomButton(style: .pause)
     
     // MARK: - init(_:)
     init() {
