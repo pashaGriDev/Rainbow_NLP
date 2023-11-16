@@ -173,7 +173,7 @@ extension SettingsViewController {
         }
         
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor , constant: Constants.defaultPadding),
+            collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: Constants.defaultPadding),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.mediumPadding),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.mediumPadding),
             collectionView.bottomAnchor.constraint(equalTo: restoreDefaultsButton.topAnchor, constant: -Constants.defaultPadding),
