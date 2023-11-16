@@ -19,11 +19,12 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        navigationController?.navigationBar.isHidden = true
     }
     
     func setup() {
         mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
-        mainView.resultButton.addTarget(self, action: #selector(statsButtonTapped), for: .touchUpInside)
+        mainView.resultButton.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
         mainView.settingButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
         mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
     }
@@ -31,19 +32,21 @@ class MainViewController: UIViewController {
 
 
 @objc extension MainViewController {
-    func newGameButtonTapped () {
+    func newGameButtonTapped() {
         print ("Go to new game")
     }
     
-    func rulesButtonTapped (_ sender: UIButton) {
+    func rulesButtonTapped(_ sender: UIButton) {
         print ("Go to rules")
     }
     
-    func settingsButtonTapped (_ sender: UIButton) {
-        print ("Go to settings")
+    func settingsButtonTapped(_ sender: UIButton) {
+        let vc = SettingsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
-    func statsButtonTapped (_ sender: UIButton) {
-        print ("Go to stats")
+    func resultButtonTapped(_ sender: UIButton) {
+        let vc = ResultsViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
