@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101FE3B92B058DDC00BBB7FC /* DataManager.swift */; };
 		1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1078D1B32B0116CD00A265D0 /* AppDelegate.swift */; };
 		1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */; };
 		1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1078D1B72B0116CD00A265D0 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101FE3B92B058DDC00BBB7FC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1078D1B02B0116CD00A265D0 /* Rainbow_NLP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow_NLP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1078D1B32B0116CD00A265D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101FE3B82B058D9800BBB7FC /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				101FE3B92B058DDC00BBB7FC /* DataManager.swift */,
+			);
+			path = DataManager;
+			sourceTree = "<group>";
+		};
 		102959672B02C146002D27D9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +110,7 @@
 		1078D1B22B0116CD00A265D0 /* Rainbow_NLP */ = {
 			isa = PBXGroup;
 			children = (
+				101FE3B82B058D9800BBB7FC /* DataManager */,
 				102959672B02C146002D27D9 /* Application */,
 				10CB8F162B01B9B200CFC8D6 /* Extention */,
 				10CB8F0C2B01B88D00CFC8D6 /* TestModule */,
@@ -252,6 +263,7 @@
 				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
+				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
 				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
