@@ -7,45 +7,110 @@
 
 import UIKit
 
-/*
- 
- */
-
-class GamePlayModel {
-    let colors: [UIColor] = [.red, .yellow, .orange, .purple, .blue, .black]
-    
-    func getConfig() -> (text: String, color: UIColor) {
-        return (text: "Hello", color: colors.randomElement()!)
-    }
-}
-
 class GameTestingViewController: BaseViewController {
     // MARK: - Dependencies
     private var timer: Timer?
     private var collectionView: UICollectionView!
     private let gamePlay = GamePlayModel()
     private var gameTime = 55
+    var isGameRunning: Bool = true
+    
+    private var visualEffectView: UIVisualEffectView!
+    private var isVisualEffectViewHidden = true
+    
+    private lazy var pauseLabel: UILabel = {
+        let element = UILabel()
+        element.text = "Pause"
+        element.textAlignment = .center
+        element.font = .boldSystemFont(ofSize: 50)
+        element.textColor = .blue
+        element.makeShadow()
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        createVisualEffect()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        startGame()
     }
     
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
-        timer = Self.makeGameTimer(target: self, selector: #selector(repeatTimer))
+        
     }
     
     override func pauseButtonAction(_ sender: UIButton) {
         super.pauseButtonAction(sender)
+        if isGameRunning {
+            pause()
+        } else {
+            unpause()
+        }
+    }
+    
+    private func pause() {
+        toggleVisualEffectView()
+        isGameRunning = false
         timer?.invalidate()
         timer = nil
     }
+    
+    private func unpause() {
+        toggleVisualEffectView()
+        isGameRunning = true
+        startGame()
+    }
+    
+    private func startGame() {
+        timer = Self.makeGameTimer(target: self, selector: #selector(repeatTimer))
+    }
+    
+    
+    // Visual Effect
+    private func createVisualEffect() {
+            let blurEffect = UIBlurEffect(style: .light)
+            visualEffectView = UIVisualEffectView(effect: blurEffect)
+            visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+            visualEffectView.contentView.addSubview(pauseLabel)
+            view.addSubview(visualEffectView)
+            visualEffectView.isHidden = true
+            NSLayoutConstraint.activate([
+                
+                visualEffectView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
+                visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                
+                pauseLabel.centerXAnchor.constraint(equalTo: visualEffectView.centerXAnchor),
+                pauseLabel.centerYAnchor.constraint(equalTo: visualEffectView.centerYAnchor),
+                pauseLabel.widthAnchor.constraint(equalTo: visualEffectView.widthAnchor, multiplier: 0.5),
+                pauseLabel.heightAnchor.constraint(equalToConstant: 50)
+            ])
+        }
+
+
+    private func toggleVisualEffectView() {
+            if isVisualEffectViewHidden {
+                isVisualEffectViewHidden.toggle()
+                visualEffectView.isHidden = false
+                collectionView.isScrollEnabled = false
+            } else {
+                isVisualEffectViewHidden.toggle()
+                visualEffectView.isHidden = true
+                collectionView.isScrollEnabled = true
+            }
+        }
+    
+    
+    
     
     @objc func repeatTimer() {
         gameTime -= 1
@@ -86,7 +151,6 @@ private extension GameTestingViewController {
     func makeLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-//        layout.sectionInset = .init(top: 100, left: 30, bottom: 0, right: 0)
         layout.itemSize = .init(width: 150, height: 50)
         return layout
     }
