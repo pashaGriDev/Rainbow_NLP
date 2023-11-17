@@ -14,6 +14,11 @@ extension UIView {
         }
     }
     
+    func setupView(_ view: UIView) {
+        addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
     func pin(to superView: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

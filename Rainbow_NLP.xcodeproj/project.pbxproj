@@ -34,6 +34,8 @@
 		373D2A8B2B02797600E4EE27 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A8A2B02797600E4EE27 /* SwitchCell.swift */; };
 		92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468A2B03D40F008286D8 /* ResultsViewController.swift */; };
 		92B8468D2B03D444008286D8 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468C2B03D444008286D8 /* ResultCell.swift */; };
+		CEBD53162B07F3A900BC4E1E /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD53152B07F3A900BC4E1E /* RulesViewController.swift */; };
+		CEBD53182B07F45300BC4E1E /* String + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD53172B07F45300BC4E1E /* String + ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		373D2A8A2B02797600E4EE27 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		92B8468A2B03D40F008286D8 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		92B8468C2B03D444008286D8 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		CEBD53152B07F3A900BC4E1E /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		CEBD53172B07F45300BC4E1E /* String + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +131,7 @@
 		1078D1B22B0116CD00A265D0 /* Rainbow_NLP */ = {
 			isa = PBXGroup;
 			children = (
+				CEBD53142B07F38600BC4E1E /* RulesScreen */,
 				102959672B02C146002D27D9 /* Application */,
 				10CB8F162B01B9B200CFC8D6 /* Extention */,
 				101F8B102B06A83F0021EE21 /* MainModule */,
@@ -180,6 +185,7 @@
 				101F8B082B0690B30021EE21 /* UIColor + ext.swift */,
 				101F8B0C2B069DED0021EE21 /* UIButton + ext.swift */,
 				101F8B0E2B06A6BA0021EE21 /* UILabel + ext.swift */,
+				CEBD53172B07F45300BC4E1E /* String + ext.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -202,6 +208,14 @@
 				92B8468C2B03D444008286D8 /* ResultCell.swift */,
 			);
 			path = ResultsScreen;
+			sourceTree = "<group>";
+		};
+		CEBD53142B07F38600BC4E1E /* RulesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD53152B07F3A900BC4E1E /* RulesViewController.swift */,
+			);
+			path = RulesScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,7 +297,9 @@
 				370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */,
 				10CB8F1A2B01C48B00CFC8D6 /* TestingViewController2.swift in Sources */,
 				1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */,
+				CEBD53162B07F3A900BC4E1E /* RulesViewController.swift in Sources */,
 				101F8B092B0690B30021EE21 /* UIColor + ext.swift in Sources */,
+				CEBD53182B07F45300BC4E1E /* String + ext.swift in Sources */,
 				101F8B0D2B069DED0021EE21 /* UIButton + ext.swift in Sources */,
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,

@@ -39,6 +39,8 @@ class MainViewController: UIViewController {
     
     func rulesButtonTapped(_ sender: UIButton) {
         print ("Go to rules")
+        let vc = RulesViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func settingsButtonTapped(_ sender: UIButton) {
