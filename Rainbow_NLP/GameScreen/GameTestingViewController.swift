@@ -12,7 +12,7 @@ class GameTestingViewController: BaseViewController {
     private var timer: Timer?
     private var collectionView: UICollectionView!
     private let gamePlay = GamePlayModel()
-    private var gameTime = 55
+    private var gameTime = 5
     var isGameRunning: Bool = true
     
     private var visualEffectView: UIVisualEffectView!
@@ -127,12 +127,20 @@ class GameTestingViewController: BaseViewController {
             }
         }
     
-    
-    
-    
     @objc func repeatTimer() {
         gameTime -= 1
-        setNavigationTitle = "\(gameTime)"
+        let minutes = gameTime / 60
+        let seconds = gameTime % 60
+        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
+        setNavigationTitle = formattedTime
+        
+        if gameTime <= 0 {
+            isHiddenPauseButton = true
+            timer?.invalidate()
+            timer = nil
+            isGameRunning = false
+            return
+        }
         
         let num = gameTime % 3
         if num == 0 {
