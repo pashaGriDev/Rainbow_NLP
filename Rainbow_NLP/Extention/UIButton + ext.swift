@@ -16,7 +16,8 @@ extension UIButton {
         button.setTitle(text, for: .normal)
         button.layer.cornerRadius = 12
         button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont(name: "SFPro-Regular", size: 20)
+//        button.titleLabel?.font = UIFont(name: "SF-Pro-Display-Regular", size: 40)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         button.backgroundColor = color
         return button
     }
