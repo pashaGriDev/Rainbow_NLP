@@ -11,9 +11,8 @@ class MainView: UIView {
     private struct Drawing {
         static let buttonSize: CGFloat = 50.0
         static let buttonPadding: CGFloat = 50.0
-        static let buttonSpacing: CGFloat = 12.0
+        static let buttonSpacing: CGFloat = 20.0
     }
-    
     // MARK: - Private UI
     private let rainbowImage = MainView.makeRainbowImage()
     private let nlpLabel: UILabel = .makeLabel(
@@ -94,10 +93,10 @@ class MainView: UIView {
              rainbowLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
              rainbowLabel.topAnchor.constraint(equalTo: nlpLabel.bottomAnchor),
              
-             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor),
+             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor,constant: 20),
              buttonContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Drawing.buttonPadding),
              buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.buttonPadding),
-             buttonContainer.heightAnchor.constraint(equalToConstant: 160),
+             buttonContainer.heightAnchor.constraint(equalToConstant: 240),
              
              settingButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
              settingButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
@@ -109,6 +108,9 @@ class MainView: UIView {
              rulesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26),
              rulesButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
             ])
+        let backgroundImage = UIImage(named: "rainbowBackground")
+        self.backgroundColor = UIColor(patternImage: backgroundImage!)
+    
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
