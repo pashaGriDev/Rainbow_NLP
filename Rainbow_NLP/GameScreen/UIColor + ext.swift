@@ -26,4 +26,6 @@ extension UIColor {
         let luminance = 0.2126 * redComponent + 0.7152 * greenComponent + 0.0722 * blueComponent
         return luminance
     }
+    
+    
 }

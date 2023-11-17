@@ -21,12 +21,21 @@ class CustomNavBarButton: UIButton {
         self.style = style
         super.init(frame: .zero)
 
+//        switch style {
+//        case .back:
+//            setImage(UIImage(named: "arrowLeft"), for: .normal)
+//        case .pause:
+//            setImage(UIImage(named: "pause"), for: .normal)
+//        }
+        
         switch style {
         case .back:
-            setImage(UIImage(named: "arrowLeft"), for: .normal)
+            setImage(UIImage(systemName: "chevron.backward.2")?.withTintColor(.blue.withAlphaComponent(1.0), renderingMode: .alwaysOriginal), for: .normal)
         case .pause:
-            setImage(UIImage(named: "pause"), for: .normal)
+            setImage(UIImage(systemName: "pause.fill")?.withTintColor(.cyan.withAlphaComponent(0.5), renderingMode: .alwaysOriginal), for: .normal)
         }
+        
+        
     }
     
     required init?(coder: NSCoder) {

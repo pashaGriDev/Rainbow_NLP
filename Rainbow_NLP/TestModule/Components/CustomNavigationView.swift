@@ -26,8 +26,8 @@ final class CustomNavigationView: UIView {
         static let screenWidth: CGFloat = UIScreen.main.bounds.width
         static let height: CGFloat = K.heigh()
         static let padding: CGFloat = 12.0
-        static let backgroundColor: UIColor = .systemBlue
-        static let fontSize: CGFloat = 22.0
+//        static let backgroundColor: UIColor = .systemBlue
+        static let fontSize: CGFloat = 30.0
         static let buttonHeight: CGFloat = 50.0
     }
     
@@ -39,7 +39,7 @@ final class CustomNavigationView: UIView {
     // MARK: - init(_:)
     init() {
         super.init(frame: .zero)
-        self.backgroundColor = Drawing.backgroundColor
+//        self.backgroundColor = Drawing.backgroundColor
         addSubview(backButton, titleLabel, pauseButton)
     }
     
@@ -53,6 +53,19 @@ final class CustomNavigationView: UIView {
         self.frame.size = .init(
             width: Drawing.screenWidth,
             height: Drawing.height
+        )
+        self.layer.insertSublayer(
+            createGradientLayer(
+                from: .cyan.withAlphaComponent(
+                    0.5
+                ),
+                to: .blue.withAlphaComponent(
+                    0.5
+                ),
+                direction: .horizontal,
+                frame: self.bounds
+            ),
+            at: 0
         )
         setLayout()
     }
@@ -85,8 +98,9 @@ final class CustomNavigationView: UIView {
 extension CustomNavigationView {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel()
-        label.text = "Testing text"
-         label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .regular)
+        label.text = ""
+         label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .bold)
+        label.textColor = .purple
         label.textAlignment = .center
         return label
     }

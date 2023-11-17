@@ -29,12 +29,30 @@ class GameTestingViewController: BaseViewController {
         return element
     }()
     
+    private lazy var bgrndImageView: UIImageView = {
+        let element = UIImageView()
+        element.image = .gameBgrnd
+        element.contentMode = .scaleAspectFill
+        element.alpha = 0.3
+        element.translatesAutoresizingMaskIntoConstraints = false
+        return element
+    }()
+    
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(bgrndImageView)
+        
+        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
+        
         setupCollectionView()
         createVisualEffect()
+        
+        collectionView.backgroundColor = .clear
+
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
