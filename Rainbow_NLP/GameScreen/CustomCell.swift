@@ -12,21 +12,29 @@ class CustomCell: UICollectionViewCell {
     let label: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 30, weight: .bold)
+        label.font = .systemFont(ofSize: 25, weight: .bold)
         label.textAlignment = .center
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .clear
-        addSubview(label)
+        contentView.addSubview(label)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         label.frame = bounds
+    }
+    
+    func configure(text: String, and color: UIColor) {
+        label.text = text
+        contentView.backgroundColor = color
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        print(#function, "\(label.text ?? "no text")")
+        contentView.backgroundColor = .clear
     }
     
     required init?(coder aDecoder: NSCoder) {

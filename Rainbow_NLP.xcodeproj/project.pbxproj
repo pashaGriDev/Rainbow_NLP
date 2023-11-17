@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101F8B122B06E7C60021EE21 /* GameTestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F8B112B06E7C60021EE21 /* GameTestingViewController.swift */; };
 		101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101FE3B92B058DDC00BBB7FC /* DataManager.swift */; };
 		1078D1B42B0116CD00A265D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1078D1B32B0116CD00A265D0 /* AppDelegate.swift */; };
 		1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101F8B112B06E7C60021EE21 /* GameTestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTestingViewController.swift; sourceTree = "<group>"; };
 		101FE3B92B058DDC00BBB7FC /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		1078D1B02B0116CD00A265D0 /* Rainbow_NLP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rainbow_NLP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1078D1B32B0116CD00A265D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				370CD4C72B06733B00C2E102 /* ColorModel.swift */,
 				370CD4C92B0673C400C2E102 /* CustomCell.swift */,
 				370CD4CB2B06997C00C2E102 /* UIColor + ext.swift */,
+				101F8B112B06E7C60021EE21 /* GameTestingViewController.swift */,
 			);
 			path = GameScreen;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				370CD4CA2B0673C400C2E102 /* CustomCell.swift in Sources */,
 				1078D1B82B0116CD00A265D0 /* ViewController.swift in Sources */,
 				373D2A892B02796200E4EE27 /* SliderCell.swift in Sources */,
+				101F8B122B06E7C60021EE21 /* GameTestingViewController.swift in Sources */,
 				92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */,
 				370CD4C12B02914A00C2E102 /* SettingsCellModel.swift in Sources */,
 				10CB8F012B0150BA00CFC8D6 /* MainView.swift in Sources */,

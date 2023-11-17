@@ -7,19 +7,19 @@
 
 import UIKit
 
-//extension GameViewController {
-//    static func makeGameTimer(selector: Selector) -> Timer {
-//        let timer = Timer.scheduledTimer(
-//            timeInterval: 1.0,
-//            target: self,
-//            selector: selector,
-//            userInfo: nil,
-//            repeats: true
-//        )
-//        timer.tolerance = 0.6
-//        return timer
-//    }
-//}
+extension GameViewController {
+    static func makeGameTimer(target: Any, selector: Selector) -> Timer {
+        let timer = Timer.scheduledTimer(
+            timeInterval: 1.0,
+            target: target,
+            selector: selector,
+            userInfo: nil,
+            repeats: true
+        )
+        timer.tolerance = 0.6
+        return timer
+    }
+}
 
 extension Int {
     func toString() -> String {
@@ -30,18 +30,9 @@ extension Int {
     }
 }
 
-struct UserSettingModel {
-    var timeInterval: Int = 60
-}
-
-struct GamePlayModel {
-    
-}
-
 class GameViewController: BaseViewController {
     var cellWorkItem: DispatchWorkItem?
     
-    var userSetting = UserSettingModel()
     var collectionView: UICollectionView!
     
     var cellColors: [CellColor] = CellColor.allCases
@@ -56,14 +47,7 @@ class GameViewController: BaseViewController {
     private var seconds = 60
     
     private func startTimer() {
-        let timer = Timer.scheduledTimer(
-            timeInterval: 1.0,
-            target: self,
-            selector: #selector(repeatTimer),
-            userInfo: nil,
-            repeats: true
-        )
-        timer.tolerance = 0.6
+        let timer = Self.makeGameTimer(target: self, selector: #selector(repeatTimer))
         isTimerRunning = true
         self.timer = timer
     }
@@ -82,6 +66,7 @@ class GameViewController: BaseViewController {
         super.viewDidLoad()
         setup()
         setupCollectionView()
+        setLayout()
         createVisualEffect()
     }
     
