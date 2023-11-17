@@ -16,7 +16,7 @@ final class RulesViewController: BaseViewController {
         addConstraints()
         setViews()
         print(rulesView.frame.height)
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.20)
+        view.backgroundColor = UIColor.lightGray
     }
     
     private lazy var rulesView: UIView = {
