@@ -12,8 +12,9 @@ class GameViewController: BaseViewController {
     private var timer: Timer?
     private var collectionView: UICollectionView!
     private let gamePlay = GamePlayModel()
-    private var gameTime = 5
+    private var gameTime = 15
     var isGameRunning: Bool = true
+    var gameWithBG: Bool = false
     
     private var visualEffectView: UIVisualEffectView!
     private var isVisualEffectViewHidden = true
@@ -194,8 +195,17 @@ extension GameViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CustomCell.self),
             for: indexPath
         ) as! CustomCell
-        let config = gamePlay.getConfig()
-        cell.configure(text: config.text, and: config.color)
+        //        let config = gamePlay.getConfig()
+        
+        if gameWithBG {
+            let config = gamePlay.getConfig()
+            cell.configure(text: config.text, and: config.color)
+        } else {
+            let config = gamePlay.getConfigNoBg()
+            cell.configure(text: config.text, and: config.color)
+        }
+        
+//        cell.configure(text: config.text, and: config.color)
         return cell
     }
 }
