@@ -94,7 +94,7 @@ extension ResultsViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ResultsCell.self)", for: indexPath) as? ResultsCell else {
             return UICollectionViewCell()
         }
-        cell.backgroundColor = .white
+        cell.backgroundColor = #colorLiteral(red: 0.8981253366, green: 0.8981253366, blue: 0.8981253366, alpha: 1)
         cell.layer.cornerRadius = 12
         cell.gameNumberLabel.text = gameStatistics[indexPath.row].numberString
         cell.gameNumberLabel.textColor = #colorLiteral(red: 0.9118689299, green: 0.1904129386, blue: 0.753595531, alpha: 1)
