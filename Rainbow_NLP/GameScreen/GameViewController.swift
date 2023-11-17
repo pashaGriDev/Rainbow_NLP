@@ -1,5 +1,5 @@
 //
-//  GameTestingViewController.swift
+//  GameViewController.swift
 //  Rainbow_NLP
 //
 //  Created by Павел Грицков on 17.11.23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GameTestingViewController: BaseViewController {
+class GameViewController: BaseViewController {
     // MARK: - Dependencies
     private var timer: Timer?
     private var collectionView: UICollectionView!
@@ -38,26 +38,24 @@ class GameTestingViewController: BaseViewController {
         return element
     }()
     
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.addSubview(bgrndImageView)
-        
-        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
-        
+        initialStateView()
         setupCollectionView()
         createVisualEffect()
-        
-        collectionView.backgroundColor = .clear
-
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         startGame()
+    }
+    
+    //MARK: - Methods
+    private func initialStateView() {
+        setNavigationTitle = "Preparing"
+        view.addSubview(bgrndImageView)
+        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
     override func backButtonAction(_ sender: UIButton) {
@@ -92,41 +90,41 @@ class GameTestingViewController: BaseViewController {
     }
     
     
-    // Visual Effect
+    //MARK: - Visual Blur Effect View
     private func createVisualEffect() {
-            let blurEffect = UIBlurEffect(style: .light)
-            visualEffectView = UIVisualEffectView(effect: blurEffect)
-            visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-            visualEffectView.contentView.addSubview(pauseLabel)
-            view.addSubview(visualEffectView)
-            visualEffectView.isHidden = true
-            NSLayoutConstraint.activate([
-                
-                visualEffectView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
-                visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                
-                pauseLabel.centerXAnchor.constraint(equalTo: visualEffectView.centerXAnchor),
-                pauseLabel.centerYAnchor.constraint(equalTo: visualEffectView.centerYAnchor),
-                pauseLabel.widthAnchor.constraint(equalTo: visualEffectView.widthAnchor, multiplier: 0.5),
-                pauseLabel.heightAnchor.constraint(equalToConstant: 50)
-            ])
-        }
-
-
-    private func toggleVisualEffectView() {
-            if isVisualEffectViewHidden {
-                isVisualEffectViewHidden.toggle()
-                visualEffectView.isHidden = false
-                collectionView.isScrollEnabled = false
-            } else {
-                isVisualEffectViewHidden.toggle()
-                visualEffectView.isHidden = true
-                collectionView.isScrollEnabled = true
-            }
-        }
+        let blurEffect = UIBlurEffect(style: .light)
+        visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        visualEffectView.contentView.addSubview(pauseLabel)
+        view.addSubview(visualEffectView)
+        visualEffectView.isHidden = true
+        NSLayoutConstraint.activate([
+            
+            visualEffectView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
+            visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            pauseLabel.centerXAnchor.constraint(equalTo: visualEffectView.centerXAnchor),
+            pauseLabel.centerYAnchor.constraint(equalTo: visualEffectView.centerYAnchor),
+            pauseLabel.widthAnchor.constraint(equalTo: visualEffectView.widthAnchor, multiplier: 0.5),
+            pauseLabel.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
     
+    private func toggleVisualEffectView() {
+        if isVisualEffectViewHidden {
+            isVisualEffectViewHidden.toggle()
+            visualEffectView.isHidden = false
+            collectionView.isScrollEnabled = false
+        } else {
+            isVisualEffectViewHidden.toggle()
+            visualEffectView.isHidden = true
+            collectionView.isScrollEnabled = true
+        }
+    }
+    
+    //MARK: - Timer Impl
     @objc func repeatTimer() {
         gameTime -= 1
         let minutes = gameTime / 60
@@ -154,7 +152,7 @@ class GameTestingViewController: BaseViewController {
 }
 
 // MARK: - Private extension
-private extension GameTestingViewController {
+private extension GameViewController {
     func setupCollectionView() {
         let point = CGPoint(x: 0, y: K.heigh())
         let frame = CGRect(
@@ -169,7 +167,7 @@ private extension GameTestingViewController {
             forCellWithReuseIdentifier: String(describing: CustomCell.self)
         )
         
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .clear
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -183,7 +181,7 @@ private extension GameTestingViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension GameTestingViewController: UICollectionViewDataSource {
+extension GameViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
@@ -202,7 +200,8 @@ extension GameTestingViewController: UICollectionViewDataSource {
     }
 }
 
-extension GameTestingViewController: UICollectionViewDelegateFlowLayout {
+//MARK: - UICollectionViewDelegateFlowLayout
+extension GameViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = self.collectionView.bounds.width - 150
         let height = self.collectionView.bounds.height - 50
@@ -212,7 +211,7 @@ extension GameTestingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension GameTestingViewController {
+extension GameViewController {
     static func makeGameTimer(target: Any, selector: Selector) -> Timer {
         let timer = Timer.scheduledTimer(
             timeInterval: 1.0,

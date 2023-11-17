@@ -98,7 +98,7 @@ final class CustomNavigationView: UIView {
 extension CustomNavigationView {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel()
-        label.text = ""
+        label.text = "Testing text"
          label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .bold)
         label.textColor = .purple
         label.textAlignment = .center

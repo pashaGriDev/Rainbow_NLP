@@ -32,6 +32,12 @@ class CustomCell: UICollectionViewCell {
     func configure(text: String, and color: UIColor) {
         label.text = text
         contentView.backgroundColor = color
+        
+        var labelColor = UIColor.randomColor()
+        while labelColor.contrastRatio(with: color) < 1.5 {
+            labelColor = UIColor.randomColor()
+        }
+        label.textColor = labelColor
     }
     
     override func prepareForReuse() {
