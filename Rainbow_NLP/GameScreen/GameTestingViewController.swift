@@ -51,10 +51,14 @@ class GameTestingViewController: BaseViewController {
         gameTime -= 1
         setNavigationTitle = "\(gameTime)"
         
-        collectionView.reloadData()
-//        if gameTime % 2 == 0 {
-//            collectionView.reloadData()
-//        }
+        let num = gameTime % 3
+        if num == 0 {
+            print("true")
+            collectionView.reloadData()
+            UIView.animate(withDuration: 1) {
+                self.view.layoutIfNeeded()
+            }
+        }
     }
 }
 
@@ -77,15 +81,13 @@ private extension GameTestingViewController {
         collectionView.backgroundColor = .lightGray
         collectionView.dataSource = self
         collectionView.delegate = self
-//        let lay = UICollectionViewLayout()
-//        collectionView.setCollectionViewLayout(<#T##layout: UICollectionViewLayout##UICollectionViewLayout#>, animated: <#T##Bool#>, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
     }
     
     func makeLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
 //        layout.sectionInset = .init(top: 100, left: 30, bottom: 0, right: 0)
-        layout.itemSize = .init(width: 100, height: 50)
+        layout.itemSize = .init(width: 150, height: 50)
         return layout
     }
 }
@@ -104,7 +106,6 @@ extension GameTestingViewController: UICollectionViewDataSource {
             withReuseIdentifier: String(describing: CustomCell.self),
             for: indexPath
         ) as! CustomCell
-        print(#function, "+")
         let config = gamePlay.getConfig()
         cell.configure(text: config.text, and: config.color)
         return cell
@@ -112,14 +113,8 @@ extension GameTestingViewController: UICollectionViewDataSource {
 }
 
 extension GameTestingViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print(#function, "size")
-//        return .init(width: 100, height: 50)
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        print(#function, "inset")
-        let width = self.collectionView.bounds.width - 100
+        let width = self.collectionView.bounds.width - 150
         let height = self.collectionView.bounds.height - 50
         let top: CGFloat = Double.random(in: 0...height)
         let left: CGFloat = Double.random(in: 0...width)
@@ -130,13 +125,13 @@ extension GameTestingViewController: UICollectionViewDelegateFlowLayout {
 extension GameTestingViewController {
     static func makeGameTimer(target: Any, selector: Selector) -> Timer {
         let timer = Timer.scheduledTimer(
-            timeInterval: 0.5,
+            timeInterval: 1.0,
             target: target,
             selector: selector,
             userInfo: nil,
             repeats: true
         )
-        timer.tolerance = 0.6
+        timer.tolerance = 0.2
         return timer
     }
 }

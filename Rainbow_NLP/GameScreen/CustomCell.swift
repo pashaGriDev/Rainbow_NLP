@@ -20,6 +20,8 @@ class CustomCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(label)
+        layer.cornerRadius = 10
+        clipsToBounds = true
     }
     
     override func layoutSubviews() {
