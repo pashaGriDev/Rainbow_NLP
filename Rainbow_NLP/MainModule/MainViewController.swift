@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         setup()
         navigationController?.navigationBar.isHidden = true

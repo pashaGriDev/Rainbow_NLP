@@ -31,9 +31,9 @@ class CustomButton: UIButton {
         case .pause:
             setImage(UIImage(named: "pause"), for: .normal)
         case .setting:
-            setImage(UIImage(named: "settingButtonImage"), for: .normal)
+            setImage(UIImage(named: "settings"), for: .normal)
         case .rules:
-            setImage(UIImage(named: "rulesButtonImage"), for: .normal)
+            setImage(UIImage(named: "question-mark"), for: .normal)
         }
         self.tintColor = color
     }
