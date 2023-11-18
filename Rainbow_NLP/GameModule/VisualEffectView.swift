@@ -11,7 +11,7 @@ class VisualEffectView: UIVisualEffectView {
     
     private lazy var pauseLabel: UILabel = {
         let element = UILabel()
-        element.text = "Pause"
+        element.text = "Пауза"
         element.textAlignment = .center
         element.font = .boldSystemFont(ofSize: 50)
         element.textColor = .blue
