@@ -24,6 +24,16 @@ extension UIView {
         ])
     }
     
+    func pinToNav(to superView: UIView, nav: UIView) {
+            translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                topAnchor.constraint(equalTo: nav.bottomAnchor),
+                leftAnchor.constraint(equalTo: superView.leftAnchor),
+                trailingAnchor.constraint(equalTo: superView.trailingAnchor),
+                bottomAnchor.constraint(equalTo: superView.bottomAnchor)
+            ])
+        }
+    
     func makeShadow() {
         self.layer.shadowColor = UIColor.gray.cgColor
         self.layer.shadowRadius = 3.0
