@@ -26,7 +26,7 @@ struct UserSetting: Codable {
 
 class GameViewController: BaseViewController {
     // MARK: - Private properties
-    private var userSetting: UserSetting = .init()
+    private var userSetting: UserSetting = .init() // maybe delete
     private let dataManager: DataManager = DataManager<UserSetting>()
     
     private var isGameRunning: Bool = true
@@ -73,41 +73,37 @@ class GameViewController: BaseViewController {
         do {
             let userSetting = try dataManager.load(by: .userSettingData)
             self.userSetting = userSetting
+            self.gameTime = userSetting.gameTime
+            
         } catch {
+            // !!!: Delete
+            gameTime = 30
             print(error.localizedDescription)
         }
     }
     
-    
-    override func backButtonAction(_ sender: UIButton) {
-        super.backButtonAction(sender)
-        
-    }
-    
-    override func pauseButtonAction(_ sender: UIButton) {
-        super.pauseButtonAction(sender)
-        if isGameRunning {
-            pause()
-        } else {
-            unpause()
-        }
-    }
-    
-    private func pause() {
+    private func pauseGame() {
         toggleVisualEffectView()
         isGameRunning = false
         timer?.invalidate()
         timer = nil
     }
     
-    private func unpause() {
+    private func playGame() {
         toggleVisualEffectView()
         isGameRunning = true
         startGame()
     }
     
     private func startGame() {
-        timer = Self.makeGameTimer(target: self, selector: #selector(repeatTimer))
+        timer = Timer.scheduledTimer(
+            timeInterval: 1.0, // game speed
+            target: self,
+            selector: #selector(repeatTimer),
+            userInfo: nil,
+            repeats: true
+        )
+        timer?.tolerance = 0.2
     }
     
     
@@ -129,13 +125,25 @@ class GameViewController: BaseViewController {
         }
     }
     
-    //MARK: - Timer Impl
+    // MARK: - Override Methods
+    override func backButtonAction(_ sender: UIButton) {
+        super.backButtonAction(sender)
+        
+    }
+    
+    override func pauseButtonAction(_ sender: UIButton) {
+        super.pauseButtonAction(sender)
+        if isGameRunning {
+            pauseGame()
+        } else {
+            playGame()
+        }
+    }
+    
+    //MARK: - Timer Imp
     @objc func repeatTimer() {
         gameTime -= 1
-        let minutes = gameTime / 60
-        let seconds = gameTime % 60
-        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
-        setNavigationTitle = formattedTime
+        setNavigationTitle = gameTime.toStringTimeFormat()
         
         if gameTime <= 0 {
             isHiddenPauseButton = true
@@ -234,16 +242,10 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension GameViewController {
-    static func makeGameTimer(target: Any, selector: Selector) -> Timer {
-        let timer = Timer.scheduledTimer(
-            timeInterval: 1.0,
-            target: target,
-            selector: selector,
-            userInfo: nil,
-            repeats: true
-        )
-        timer.tolerance = 0.2
-        return timer
+extension Int {
+    func toStringTimeFormat() -> String {
+        let minutes = self / 60
+        let seconds = self % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
