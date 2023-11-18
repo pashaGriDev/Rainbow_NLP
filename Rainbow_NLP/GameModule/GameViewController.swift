@@ -26,14 +26,17 @@ struct UserSetting: Codable {
 
 class GameViewController: BaseViewController {
     // MARK: - Private properties
-    private var userSetting: UserSetting = .init() // maybe delete
+//    private var userSetting: UserSetting = .init() // maybe delete
     private let dataManager: DataManager = DataManager<UserSetting>()
     
     private var isGameRunning: Bool = true
     private var timer: Timer?
     private var collectionView: UICollectionView!
     private let gamePlay = GamePlayModel()
+    
+    private var isBackground = true
     private var gameTime = 15
+    private var durationTime = 2
     
     private var visualEffectView: UIVisualEffectView = VisualEffectView(effect: UIBlurEffect(style: .light))
     private var isVisualEffectViewHidden = true
@@ -72,12 +75,16 @@ class GameViewController: BaseViewController {
     private func setUserSetting() {
         do {
             let userSetting = try dataManager.load(by: .userSettingData)
-            self.userSetting = userSetting
+//            self.userSetting = userSetting
+            self.isBackground = userSetting.isBackground
             self.gameTime = userSetting.gameTime
-            
+            self.durationTime = userSetting.durationTime
         } catch {
-            // !!!: Delete
+            // !!!: Delete Moc Uset setting
+            isBackground = true
             gameTime = 30
+            durationTime = 5
+            
             print(error.localizedDescription)
         }
     }
@@ -153,7 +160,7 @@ class GameViewController: BaseViewController {
             return
         }
         
-        let num = gameTime % 3
+        let num = gameTime % durationTime
         if num == 0 {
             print("true")
             collectionView.reloadData()
@@ -212,7 +219,7 @@ extension GameViewController: UICollectionViewDataSource {
             for: indexPath
         ) as! CustomCell
         
-        switch userSetting.isBackground {
+        switch isBackground {
         case true:
             let config = gamePlay.getConfig()
             cell.configure(text: config.text, and: config.color)
