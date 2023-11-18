@@ -12,7 +12,14 @@ private struct Constants {
     static let defaultPadding: CGFloat = 16
 }
 
+protocol SwitchCellDelegate: AnyObject {
+    // change name
+    func switchHandler(_ cell: SwitchCell, value: Bool) -> Void
+}
+
 class SwitchCell: UICollectionViewCell {
+    weak var delegate: SwitchCellDelegate?
+    
     //MARK: - UI Elements
     private let nameLabel = makeLabel()
     
@@ -28,10 +35,16 @@ class SwitchCell: UICollectionViewCell {
         layer.cornerRadius = Constants.cornerRadius
         contentView.addSubview(nameLabel, switchControl)
         setupConstraints()
+        
+        switchControl.addTarget(self, action: #selector(switchHandler), for: .valueChanged)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func switchHandler(_ sender: UISwitch) {
+        delegate?.switchHandler(self, value: switchControl.isOn)
     }
     
     //MARK: - Constraints
@@ -48,8 +61,8 @@ class SwitchCell: UICollectionViewCell {
     }
     
     //MARK: - Cell config
-    func configure(with parameter: Parameter) {
-        nameLabel.text = parameter.name
-        switchControl.isOn = parameter.defaultValue as? Bool ?? false
+    func configure(with parameters: CellSwitchCell) {
+        nameLabel.text = parameters.title
+        switchControl.isOn = parameters.switchValue
     }
 }

@@ -7,23 +7,6 @@
 
 import UIKit
 
-struct UserSetting: Codable {
-    let gameTime: Int
-    ///  продолжительность отображения ячейки
-    let durationTime: Int
-    let isBackground: Bool
-    
-    init(
-        gameTime: Int = 30,
-        durationTime: Int = 3,
-        isBackground: Bool = true
-    ) {
-        self.gameTime = gameTime
-        self.durationTime = durationTime
-        self.isBackground = isBackground
-    }
-}
-
 class GameViewController: BaseViewController {
     // MARK: - Private properties
     private let dataManager: DataManager = DataManager<UserSetting>()
@@ -200,7 +183,7 @@ private extension GameViewController {
     func makeLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = .init(width: 150, height: 50)
+        layout.itemSize = .init(width: 175, height: 50)
         return layout
     }
 }

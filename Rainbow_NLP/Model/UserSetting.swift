@@ -7,4 +7,19 @@
 
 import Foundation
 
-
+struct UserSetting: Codable {
+    let gameTime: Int
+    ///  продолжительность отображения ячейки
+    let durationTime: Int
+    let isBackground: Bool
+    
+    init(
+        gameTime: Int = 30,
+        durationTime: Int = 3,
+        isBackground: Bool = true
+    ) {
+        self.gameTime = gameTime
+        self.durationTime = durationTime
+        self.isBackground = isBackground
+    }
+}

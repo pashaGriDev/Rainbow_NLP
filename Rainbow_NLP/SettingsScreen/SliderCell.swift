@@ -13,9 +13,15 @@ private struct Constants {
     static let elementsSpacing: CGFloat = 25
 }
 
+protocol SliderCellDelegate: AnyObject {
+    func getSliderData(_ cell: UICollectionViewCell, value: Float) -> Void
+}
+
 class SliderCell: UICollectionViewCell {
-    //MARK: - UI Elements
+    // MARK: - Public properties
+    weak var delegate: SliderCellDelegate?
     
+    //MARK: - UI Elements
     private let nameLabel = makeLabel()
     private let valueLabel = makeLabel()
     private let slider: UISlider = {
@@ -43,22 +49,24 @@ class SliderCell: UICollectionViewCell {
     
     //MARK: - Private methods
     @objc private func sliderValueChanged() {
+        // почитать как отсекать все значения после запятой
         let value = round(slider.value)
+        delegate?.getSliderData(self, value: value)
         valueLabel.text = "\(Int(value))"
     }
     
     //MARK: - Cell config
-    func configure(with parameter: Parameter) {
-        nameLabel.text = parameter.name
+    func configure(with parameters: CellSliderModel) {
+        nameLabel.text = parameters.title
+        slider.minimumValue = parameters.minValue
+        slider.maximumValue = parameters.maxValue
+        slider.value = parameters.sliderValue
         
-        if let minValue = parameter.minValue, let maxValue = parameter.maxValue {
-            slider.minimumValue = minValue
-            slider.maximumValue = maxValue
-            slider.value = (parameter.defaultValue as? Float) ?? minValue
-            valueLabel.text = "\(Int(slider.value))"
-        }
+        // можно попробовать сделать анимашку
+        valueLabel.text = "\(Int(slider.value))"
     }
 }
+
 extension SliderCell {
     //MARK: - Constraints
     private func setupConstraints() {
