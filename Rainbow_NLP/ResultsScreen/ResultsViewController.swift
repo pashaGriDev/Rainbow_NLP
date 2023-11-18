@@ -33,10 +33,11 @@ class ResultsViewController: BaseViewController {
         return collectionView
     }()
     
-    private let cleanStatisticsButton: UIButton = .makeButton(
+    private let cleanButton: UIButton = .makeButton(
         text: "Очистить статистику",
         and: .newGameButtonColor
     )
+    private let bottomView = UIView()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
