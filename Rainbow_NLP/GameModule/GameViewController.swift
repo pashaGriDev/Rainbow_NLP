@@ -30,14 +30,14 @@ class GameViewController: BaseViewController {
         return element
     }()
     
-    private lazy var bgrndImageView: UIImageView = {
-        let element = UIImageView()
-        element.image = .gameBgrnd
-        element.contentMode = .scaleAspectFill
-        element.alpha = 0.3
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
+//    private lazy var bgrndImageView: UIImageView = {
+//        let element = UIImageView()
+//        element.image = .gameBgrnd
+//        element.contentMode = .scaleAspectFill
+//        element.alpha = 0.3
+//        element.translatesAutoresizingMaskIntoConstraints = false
+//        return element
+//    }()
     
     // MARK: - Life cycle
     override func viewDidLoad() {
@@ -55,8 +55,8 @@ class GameViewController: BaseViewController {
     //MARK: - Methods
     private func initialStateView() {
         setNavigationTitle = "Preparing"
-        view.addSubview(bgrndImageView)
-        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
+//        view.addSubview(bgrndImageView)
+//        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
     override func backButtonAction(_ sender: UIButton) {

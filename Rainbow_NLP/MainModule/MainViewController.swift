@@ -35,6 +35,8 @@ class MainViewController: UIViewController {
 @objc extension MainViewController {
     func newGameButtonTapped() {
         print ("Go to new game")
+        let vc = GameViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func rulesButtonTapped(_ sender: UIButton) {
