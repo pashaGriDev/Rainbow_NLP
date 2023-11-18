@@ -37,6 +37,8 @@
 		373D2A892B02796200E4EE27 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A882B02796200E4EE27 /* SliderCell.swift */; };
 		373D2A8B2B02797600E4EE27 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373D2A8A2B02797600E4EE27 /* SwitchCell.swift */; };
 		37E0661D2B092FB100C18F38 /* UIImage + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0661C2B092FB100C18F38 /* UIImage + ext.swift */; };
+		37E0661F2B094A6D00C18F38 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0661E2B094A6D00C18F38 /* RulesViewController.swift */; };
+		37E066232B094B3100C18F38 /* UIString + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E066222B094B3100C18F38 /* UIString + ext.swift */; };
 		92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468A2B03D40F008286D8 /* ResultsViewController.swift */; };
 		92B8468D2B03D444008286D8 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468C2B03D444008286D8 /* ResultCell.swift */; };
 /* End PBXBuildFile section */
@@ -75,6 +77,8 @@
 		373D2A882B02796200E4EE27 /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		373D2A8A2B02797600E4EE27 /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		37E0661C2B092FB100C18F38 /* UIImage + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + ext.swift"; sourceTree = "<group>"; };
+		37E0661E2B094A6D00C18F38 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		37E066222B094B3100C18F38 /* UIString + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString + ext.swift"; sourceTree = "<group>"; };
 		92B8468A2B03D40F008286D8 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		92B8468C2B03D444008286D8 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +150,7 @@
 				101FE3B82B058D9800BBB7FC /* DataManager */,
 				10CB8F112B01B93C00CFC8D6 /* Components */,
 				10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */,
+				37E066212B094A9800C18F38 /* RulesScreen */,
 				10CB8F0C2B01B88D00CFC8D6 /* TestModule */,
 				10CB8EFB2B01473C00CFC8D6 /* Model */,
 				2CD5D0082B05316100B37157 /* SF-Pro-Display-Regular.otf */,
@@ -203,6 +208,7 @@
 				101F8B0C2B069DED0021EE21 /* UIButton + ext.swift */,
 				101F8B0E2B06A6BA0021EE21 /* UILabel + ext.swift */,
 				37E0661C2B092FB100C18F38 /* UIImage + ext.swift */,
+				37E066222B094B3100C18F38 /* UIString + ext.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -216,6 +222,14 @@
 				370CD4C02B02914A00C2E102 /* SettingsCellModel.swift */,
 			);
 			path = SettingsScreen;
+			sourceTree = "<group>";
+		};
+		37E066212B094A9800C18F38 /* RulesScreen */ = {
+			isa = PBXGroup;
+			children = (
+				37E0661E2B094A6D00C18F38 /* RulesViewController.swift */,
+			);
+			path = RulesScreen;
 			sourceTree = "<group>";
 		};
 		92B846892B03D375008286D8 /* ResultsScreen */ = {
@@ -314,6 +328,7 @@
 				10C94E692B09074100164152 /* VisualEffectView.swift in Sources */,
 				1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
+				37E0661F2B094A6D00C18F38 /* RulesViewController.swift in Sources */,
 				10ACDB202B084D120049360A /* CustomCell.swift in Sources */,
 				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
 				10ACDB1D2B084D120049360A /* GameViewController.swift in Sources */,
@@ -323,6 +338,7 @@
 				10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */,
 				10CB8EFF2B0147DE00CFC8D6 /* GameResult.swift in Sources */,
 				373D2A8B2B02797600E4EE27 /* SwitchCell.swift in Sources */,
+				37E066232B094B3100C18F38 /* UIString + ext.swift in Sources */,
 				373D2A862B01472800E4EE27 /* SettingsViewController.swift in Sources */,
 				37E0661D2B092FB100C18F38 /* UIImage + ext.swift in Sources */,
 				92B8468D2B03D444008286D8 /* ResultCell.swift in Sources */,
