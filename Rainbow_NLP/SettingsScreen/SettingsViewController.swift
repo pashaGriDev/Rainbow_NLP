@@ -98,6 +98,10 @@ final class SettingsViewController: BaseViewController {
                 switchCell.configure(with: parameter)
             }
         }
+        
+        UIView.animate(withDuration: 1) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     private func setViews() {

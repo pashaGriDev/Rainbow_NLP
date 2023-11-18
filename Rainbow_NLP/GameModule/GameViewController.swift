@@ -41,9 +41,9 @@ class GameViewController: BaseViewController {
     private var visualEffectView: UIVisualEffectView = VisualEffectView(effect: UIBlurEffect(style: .light))
     private var isVisualEffectViewHidden = true
     
-    private lazy var bgrndImageView: UIImageView = {
+    private lazy var backgroundImageView: UIImageView = {
         let element = UIImageView()
-        element.image = .gameBgrnd
+        element.image = UIImage(named: "gameBgrnd")
         element.contentMode = .scaleAspectFill
         element.alpha = 0.3
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -68,8 +68,8 @@ class GameViewController: BaseViewController {
     //MARK: - Methods
     private func initialStateView() {
         setNavigationTitle = "Preparing..."
-        view.addSubview(bgrndImageView)
-        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
+        view.addSubview(backgroundImageView)
+        backgroundImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
     private func setUserSetting() {
