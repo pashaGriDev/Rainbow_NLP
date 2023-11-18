@@ -7,188 +7,167 @@
 
 import UIKit
 
+struct TextConstants {
+    static let firstText = "На экране в случайном месте появляется слово, обозначающее цвет, например: написано «синий» :"
+    static let secondText = "Нужно произнести вслух цвет текста слова (если опция в настройках «подложка для букв» выключена): \nговорим «зеленый»  \nили цвет фона, на котором написано слово (если опция в настройках «подложка для букв» включена):\nговорим «зеленый».\n\nВо время игры можно изменять скорость появления слов от 1x до 5x. \n\nВ настройках игры можно изменить: \n - длительность игры \n - скорость игры \n - включение/выключение подложки \n\nВаша цель - назвать правильно как можно больше верных цветов (в зависимости от выбранной настройки). \n\nУдачи и веселья."
+}
+
 final class RulesViewController: BaseViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        addView()
-        addConstraints()
-        setViews()
-        
-        
-    }
+    //MARK: - UI Elements
+    private lazy var rulesScrollView: UIScrollView = {
+        let element = UIScrollView()
+        element.showsVerticalScrollIndicator = true
+        return element
+    }()
     
-    private lazy var rulesView: UIView = {
+    private lazy var rulesContentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
-//        view.layer.borderColor = UIColor.blue.cgColor
-//        view.layer.borderWidth = 2
-//        view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-//        view.layer.masksToBounds = true
+        view.backgroundColor = .clear
         return view
     }()
     
-//    private lazy var rulesGameTitle: UILabel = {
-//        let label = UILabel()
-//        label.text = "ПРАВИЛА ИГРЫ"
-//        label.textAlignment = .center
-//        label.font = UIFont.systemFont(ofSize: 24)
-//        return label
-//    }()
+    private lazy var firstTextView = UITextView(
+        text: TextConstants.firstText,
+        textToHighlight: ["«синий»"],
+        color: .systemGreen,
+        weight: .light,
+        size: 25
+    )
     
-    private lazy var firstTextView: UITextView = {
-        let textView = UITextView()
-        textView.frame = CGRect(x: 0, y: 48, width: 298, height: 163)
-        textView.contentInset = UIEdgeInsets(top: 0, left: 26, bottom: 10, right: 9)
-        let string = "На экране в случайном месте появляется слово, обозначающее цвет, например: написано «синий» :"
-        let word = ["«синий»"]
-        let text = string.highlight(word, this: .green)
-        textView.attributedText = text
-        textView.font = UIFont.systemFont(ofSize: 20)
-        textView.backgroundColor = .clear
-        textView.isEditable = false
-        textView.delegate = self
-        return textView
-    }()
-    
-    private lazy var secondTextView: UITextView = {
-        let textView = UITextView()
-        textView.frame = CGRect(x: 0, y: 297, width: 298, height: 325)
-        textView.contentInset = UIEdgeInsets(top: 0, left: 26, bottom: 10, right: 9)
-        let string = "Нужно произнести вслух цвет слова (если опция «подложка для букв» выключена) или цвет фона, на котором написано слово (если опция «подложка для букв» включена):\nговорим «зеленый» .\n\nВ игре можно изменять скорость от 1x до 5x. А так же длительность игры."
-        let word = ["говорим", "«зеленый»"]
-        let text = string.highlight(word, this: .green)
-        textView.attributedText = text
-        textView.font = UIFont.systemFont(ofSize: 20)
-        textView.backgroundColor = .clear
-        textView.isEditable = false
-        textView.delegate = self
-        return textView
-    }()
-    
-    private lazy var firstHeadLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Подложка выключена:"
-        label.font = UIFont.systemFont(ofSize: 13)
-        return label
-    }()
-    
-    
-    private lazy var firstLabel: UILabel = {
-        let label = UILabel()
-        label.text = "cиний"
-        label.textColor = .green
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.makeShadow()
-        return label
-    }()
-    
-    private lazy var secondHeadLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Подложка включена:"
-        label.font = UIFont.systemFont(ofSize: 13)
-        return label
-    }()
+    private lazy var secondTextView = UITextView(
+        text: TextConstants.secondText,
+        textToHighlight: ["«зеленый»"],
+        color: .red,
+        weight: .regular,
+        size: 25
+    )
+    private lazy var firstHeadLabel = UILabel(withHeadTitle: "Подложка выключена:")
+    private lazy var secondHeadLabel = UILabel(withHeadTitle: "Подложка включена:")
+    private lazy var firstLabel = UILabel(withTitle: "cиний", textColor: .green)
     
     private lazy var secondLabel: CustomTitleButton = {
         let label = CustomTitleButton(type: .system)
         label.setTitle("синий", for: .normal)
         label.isUserInteractionEnabled = false
         label.tintColor = .white
-        label.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        label.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         return label
     }()
     
-    private lazy var firstStackLabel: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 20
-        return stack
-    }()
+    private lazy var mainStack = UIStackView(axis: .horizontal)
+    private lazy var firstStackLabel = UIStackView(axis: .vertical)
+    private lazy var secondStackLabel = UIStackView(axis: .vertical)
     
-    private lazy var secondStackLabel: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.alignment = .center
-        stack.spacing = 20
-        return stack
-    }()
+    //MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setViews()
+        addView()
+        addConstraints()
+    }
     
+    //MARK: - private Methods
     private func setViews() {
         setNavigationTitle = "Правила игры"
         isHiddenPauseButton = true
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = .clear
+        rulesScrollView.contentSize = rulesContentView.bounds.size
+        rulesScrollView.contentInsetAdjustmentBehavior = .always
     }
     
     private func addView() {
-        [/*rulesGameTitle, */rulesView, firstStackLabel, secondStackLabel, firstLabel,firstHeadLabel, secondLabel, secondHeadLabel].forEach(view.setupView(_:))
-        
-        rulesView.addSubview(firstTextView)
-        rulesView.addSubview(secondTextView)
-        
-//        rulesView.addSubview(rulesGameTitle)
-        
+        view.addSubview(rulesScrollView)
+        rulesContentView.addSubview(firstTextView, mainStack, secondTextView)
         firstStackLabel.addArrangedSubview(firstHeadLabel)
         firstStackLabel.addArrangedSubview(firstLabel)
-        
         secondStackLabel.addArrangedSubview(secondHeadLabel)
         secondStackLabel.addArrangedSubview(secondLabel)
-        
-        rulesView.addSubview(firstStackLabel)
-        rulesView.addSubview(secondStackLabel)
+        mainStack.addArrangedSubview(firstStackLabel)
+        mainStack.addArrangedSubview(secondStackLabel)
+        rulesScrollView.addSubview(rulesContentView)
     }
     
-    private func addConstraints() {
-        NSLayoutConstraint.activate([
-            rulesView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            rulesView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            rulesView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
-            rulesView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-//            rulesGameTitle.topAnchor.constraint(equalTo: rulesView.topAnchor, constant: 16),
-//            rulesGameTitle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            firstStackLabel.topAnchor.constraint(equalTo: firstTextView.bottomAnchor),
-            firstStackLabel.leadingAnchor.constraint(equalTo: rulesView.leadingAnchor, constant: 12),
-            secondStackLabel.trailingAnchor.constraint(equalTo: rulesView.trailingAnchor, constant: -12),
-            secondStackLabel.topAnchor.constraint(equalTo: firstTextView.bottomAnchor),
-            secondLabel.heightAnchor.constraint(equalToConstant: 26),
-            secondLabel.widthAnchor.constraint(equalToConstant: 94),
-            secondTextView.bottomAnchor.constraint(equalTo: rulesView.bottomAnchor),
-        ])
-    }
-    
+    //MARK: - Override methods
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
         navigationController?.popViewController(animated: true)
     }
 }
 
-extension RulesViewController: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return range.location < 300
+//MARK: - Convenience inits
+extension UILabel {
+    convenience init(withHeadTitle: String) {
+        self.init()
+        self.text = withHeadTitle
+        self.font = UIFont.boldSystemFont(ofSize: 15)
+    }
+    convenience init(withTitle: String, textColor: UIColor) {
+        self.init()
+        self.font = UIFont.boldSystemFont(ofSize: 30)
+        self.text = withTitle
+        self.textColor = textColor
+        self.makeShadow()
     }
 }
 
-final class CustomTitleButton: UIButton {
+extension UIStackView {
+    convenience init(axis: NSLayoutConstraint.Axis) {
+        self.init()
+        self.axis = axis
+        self.alignment = .center
+        self.spacing = 15
+        self.distribution = .fillEqually
+    }
+}
 
-    private var shadowLayer: CAShapeLayer!
+extension UITextView {
+    convenience init(text: String, textToHighlight: [String], color: UIColor, weight: UIFont.Weight, size: CGFloat) {
+        self.init()
+        self.attributedText = text.highlight(textToHighlight, this: color)
+        self.textAlignment = .natural
+        self.font = UIFont.systemFont(ofSize: size, weight: weight)
+        self.backgroundColor = .clear
+        self.isEditable = false
+        self.isScrollEnabled = false
+    }
+}
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if shadowLayer == nil {
-            shadowLayer = CAShapeLayer()
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 9).cgPath
-            shadowLayer.fillColor = UIColor.green.cgColor
-            shadowLayer.shadowColor = UIColor.gray.cgColor
-            shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = CGSize(width: 0, height: 5)
-            shadowLayer.shadowOpacity = 0.5
-            shadowLayer.shadowRadius = 3
-            layer.insertSublayer(shadowLayer, at: 0)
+//MARK: - Constraints
+extension RulesViewController {
+    private func addConstraints() {
+        [rulesScrollView, rulesContentView, firstTextView, secondTextView, firstHeadLabel, firstLabel, secondHeadLabel, secondLabel, mainStack, firstStackLabel, secondStackLabel].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
         }
+        
+        NSLayoutConstraint.activate([
+            rulesScrollView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
+            rulesScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            rulesScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            rulesScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            
+            rulesContentView.topAnchor.constraint(equalTo: rulesScrollView.topAnchor),
+            rulesContentView.leadingAnchor.constraint(equalTo: rulesScrollView.leadingAnchor),
+            rulesContentView.trailingAnchor.constraint(equalTo: rulesScrollView.trailingAnchor),
+            rulesContentView.bottomAnchor.constraint(equalTo: rulesScrollView.bottomAnchor),
+            rulesContentView.widthAnchor.constraint(equalTo: rulesScrollView.widthAnchor),
+            
+            firstTextView.topAnchor.constraint(equalTo: rulesContentView.topAnchor, constant: 20),
+            firstTextView.leadingAnchor.constraint(equalTo: rulesContentView.leadingAnchor, constant: 20),
+            firstTextView.trailingAnchor.constraint(equalTo: rulesContentView.trailingAnchor, constant: -20),
+            firstTextView.heightAnchor.constraint(equalToConstant: 150),
+            
+            mainStack.topAnchor.constraint(equalTo: firstTextView.bottomAnchor),
+            mainStack.leadingAnchor.constraint(equalTo: rulesScrollView.leadingAnchor, constant: 20),
+            mainStack.trailingAnchor.constraint(equalTo: rulesScrollView.trailingAnchor, constant: -20),
+            
+            secondLabel.heightAnchor.constraint(equalToConstant: 40),
+            secondLabel.widthAnchor.constraint(equalToConstant: 150),
+            
+            secondTextView.topAnchor.constraint(equalTo: mainStack.bottomAnchor, constant: 20),
+            secondTextView.leadingAnchor.constraint(equalTo: rulesContentView.leadingAnchor, constant: 20),
+            secondTextView.trailingAnchor.constraint(equalTo: rulesContentView.trailingAnchor, constant: -20),
+            secondTextView.bottomAnchor.constraint(equalTo: rulesContentView.bottomAnchor, constant: -10),
+        ])
     }
 }
-

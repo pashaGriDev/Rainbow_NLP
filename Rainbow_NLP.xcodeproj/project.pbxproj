@@ -39,6 +39,7 @@
 		37E0661D2B092FB100C18F38 /* UIImage + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0661C2B092FB100C18F38 /* UIImage + ext.swift */; };
 		37E0661F2B094A6D00C18F38 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E0661E2B094A6D00C18F38 /* RulesViewController.swift */; };
 		37E066232B094B3100C18F38 /* UIString + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E066222B094B3100C18F38 /* UIString + ext.swift */; };
+		37E066252B09751900C18F38 /* CustomTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E066242B09751900C18F38 /* CustomTitleButton.swift */; };
 		92B8468B2B03D40F008286D8 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468A2B03D40F008286D8 /* ResultsViewController.swift */; };
 		92B8468D2B03D444008286D8 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8468C2B03D444008286D8 /* ResultCell.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		37E0661C2B092FB100C18F38 /* UIImage + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + ext.swift"; sourceTree = "<group>"; };
 		37E0661E2B094A6D00C18F38 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		37E066222B094B3100C18F38 /* UIString + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIString + ext.swift"; sourceTree = "<group>"; };
+		37E066242B09751900C18F38 /* CustomTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleButton.swift; sourceTree = "<group>"; };
 		92B8468A2B03D40F008286D8 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		92B8468C2B03D444008286D8 /* ResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				37E0661E2B094A6D00C18F38 /* RulesViewController.swift */,
+				37E066242B09751900C18F38 /* CustomTitleButton.swift */,
 			);
 			path = RulesScreen;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
 				37E0661F2B094A6D00C18F38 /* RulesViewController.swift in Sources */,
+				37E066252B09751900C18F38 /* CustomTitleButton.swift in Sources */,
 				10ACDB202B084D120049360A /* CustomCell.swift in Sources */,
 				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
 				10ACDB1D2B084D120049360A /* GameViewController.swift in Sources */,
