@@ -27,7 +27,7 @@ class MainView: UIView {
         fontName: .cormorant
     )
     private lazy var buttonContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [newGameButton, resultButton])
+        let stackView = UIStackView(arrangedSubviews: [newGameButton, continueButton, resultButton])
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -38,6 +38,7 @@ class MainView: UIView {
     // MARK: - Public UI
     let newGameButton: UIButton = .makeButton(text: "Новая игра", and: .newGameButtonColor)
     let resultButton: UIButton = .makeButton(text: "Статистика", and: .newStatsButtonColor)
+    let continueButton: UIButton = .makeButton(text: "Продолжить", and: .newContinueButtonColor)
     let settingButton: CustomButton = .init(style: .setting, color: .downButtons)
     let rulesButton: CustomButton = .init(style: .rules, color: .downButtons)
     
@@ -71,33 +72,35 @@ class MainView: UIView {
             rulesButton,
             buttonContainer,
             newGameButton,
-            resultButton
+            resultButton,
+            continueButton
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
         NSLayoutConstraint.activate(
-            [rainbowImage.topAnchor.constraint(equalTo: topAnchor, constant: K.heigh() / 2),
+            [rainbowImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
              rainbowImage.centerXAnchor.constraint(equalTo: centerXAnchor),
              rainbowImage.leadingAnchor.constraint(equalTo: leadingAnchor),
              rainbowImage.trailingAnchor.constraint(equalTo: trailingAnchor),
-             rainbowImage.heightAnchor.constraint(equalToConstant: 150),
+             rainbowImage.heightAnchor.constraint(lessThanOrEqualToConstant: 150),
              
-             nlpLabel.heightAnchor.constraint(equalToConstant: 70),
+             nlpLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 70),
              nlpLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
              nlpLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
              nlpLabel.topAnchor.constraint(equalTo: rainbowImage.bottomAnchor),
              
-             rainbowLabel.heightAnchor.constraint(equalToConstant: 130),
+             rainbowLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 130),
              rainbowLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
              rainbowLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
              rainbowLabel.topAnchor.constraint(equalTo: nlpLabel.bottomAnchor),
              
-             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor,constant: 20),
+             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor, constant: 20),
              buttonContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Drawing.buttonPadding),
              buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.buttonPadding),
-             buttonContainer.heightAnchor.constraint(equalToConstant: 240),
+             buttonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: 400),
              
+             settingButton.topAnchor.constraint(lessThanOrEqualTo: buttonContainer.bottomAnchor, constant: 20),
              settingButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
              settingButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
              settingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
@@ -110,7 +113,7 @@ class MainView: UIView {
             ])
         let backgroundImage = UIImage(named: "rainbowBackground")
         self.backgroundColor = UIColor(patternImage: backgroundImage!)
-    
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -120,7 +123,7 @@ class MainView: UIView {
 extension MainView {
     static func makeRainbowImage() -> UIImageView {
         let rainbowView = UIImageView()
-        rainbowView.image = UIImage(named: "RainbowImage")
+        rainbowView.image = UIImage(named: "Rainbowimage")
         rainbowView.contentMode = .scaleAspectFit
         return rainbowView
     }
