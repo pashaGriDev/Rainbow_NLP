@@ -27,7 +27,7 @@ final class CustomNavigationView: UIView {
         static let height: CGFloat = K.heigh()
         static let padding: CGFloat = 12.0
         static let backgroundColor: UIColor = .systemBlue
-        static let fontSize: CGFloat = 22.0
+        static let fontSize: CGFloat = 30.0
         static let buttonHeight: CGFloat = 50.0
     }
     
@@ -54,6 +54,13 @@ final class CustomNavigationView: UIView {
             width: Drawing.screenWidth,
             height: Drawing.height
         )
+        self.layer.insertSublayer(
+            createGradientLayer(from: .cyan.withAlphaComponent(0.5),
+                                to: .blue.withAlphaComponent(0.5),
+                                direction: .horizontal,
+                                frame: self.bounds),
+            at: 0)
+        
         setLayout()
     }
     
@@ -86,7 +93,8 @@ extension CustomNavigationView {
     static func makeTitleLabel() -> UILabel {
         let label = UILabel()
         label.text = "Testing text"
-         label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: Drawing.fontSize, weight: .bold)
+        label.textColor = .purple
         label.textAlignment = .center
         return label
     }
