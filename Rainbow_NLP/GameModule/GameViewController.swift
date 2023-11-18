@@ -26,7 +26,6 @@ struct UserSetting: Codable {
 
 class GameViewController: BaseViewController {
     // MARK: - Private properties
-//    private var userSetting: UserSetting = .init() // maybe delete
     private let dataManager: DataManager = DataManager<UserSetting>()
     
     private var isGameRunning: Bool = true
@@ -135,7 +134,10 @@ class GameViewController: BaseViewController {
     // MARK: - Override Methods
     override func backButtonAction(_ sender: UIButton) {
         super.backButtonAction(sender)
-        
+        // сохранить состояние игры
+        // поставить на паузу
+        pauseGame()
+        navigationController?.popViewController(animated: true)
     }
     
     override func pauseButtonAction(_ sender: UIButton) {
@@ -162,12 +164,15 @@ class GameViewController: BaseViewController {
         
         let num = gameTime % durationTime
         if num == 0 {
-            print("true")
             collectionView.reloadData()
             UIView.animate(withDuration: 1) {
                 self.view.layoutIfNeeded()
             }
         }
+    }
+    
+    deinit {
+        print(#function)
     }
 }
 
@@ -246,13 +251,5 @@ extension GameViewController: UICollectionViewDelegateFlowLayout {
         let left: CGFloat = Double.random(in: 0...width)
         
         return .init(top: top, left: left, bottom: 0, right: 0)
-    }
-}
-
-extension Int {
-    func toStringTimeFormat() -> String {
-        let minutes = self / 60
-        let seconds = self % 60
-        return String(format: "%02d:%02d", minutes, seconds)
     }
 }
