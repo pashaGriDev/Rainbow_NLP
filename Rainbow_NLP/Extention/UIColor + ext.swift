@@ -25,6 +25,9 @@ extension UIColor {
     static var backgroundColor: UIColor {
         UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
     }
+    static var newContinueButtonColor: UIColor {
+        UIColor(red: 0.183, green: 0.526, blue: 0.718, alpha: 1)
+    }
 }
 
 extension UIColor {

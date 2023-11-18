@@ -7,28 +7,39 @@
 
 import UIKit
 
+struct UserSetting: Codable {
+    let gameTime: Int
+    ///  продолжительность отображения ячейки
+    let durationTime: Int
+    let isBackground: Bool
+    
+    init(
+        gameTime: Int = 30,
+        durationTime: Int = 3,
+        isBackground: Bool = true
+    ) {
+        self.gameTime = gameTime
+        self.durationTime = durationTime
+        self.isBackground = isBackground
+    }
+}
+
 class GameViewController: BaseViewController {
-    // MARK: - Dependencies
+    // MARK: - Private properties
+//    private var userSetting: UserSetting = .init() // maybe delete
+    private let dataManager: DataManager = DataManager<UserSetting>()
+    
+    private var isGameRunning: Bool = true
     private var timer: Timer?
     private var collectionView: UICollectionView!
     private let gamePlay = GamePlayModel()
+    
+    private var isBackground = true
     private var gameTime = 15
-    var isGameRunning: Bool = true
-    var gameWithBG: Bool = false
+    private var durationTime = 2
     
-    private var visualEffectView: UIVisualEffectView!
+    private var visualEffectView: UIVisualEffectView = VisualEffectView(effect: UIBlurEffect(style: .light))
     private var isVisualEffectViewHidden = true
-    
-    private lazy var pauseLabel: UILabel = {
-        let element = UILabel()
-        element.text = "Pause"
-        element.textAlignment = .center
-        element.font = .boldSystemFont(ofSize: 50)
-        element.textColor = .blue
-        element.makeShadow()
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
     
 //    private lazy var bgrndImageView: UIImageView = {
 //        let element = UIImageView()
@@ -39,12 +50,14 @@ class GameViewController: BaseViewController {
 //        return element
 //    }()
     
+    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initialStateView()
         setupCollectionView()
         createVisualEffect()
+        setUserSetting()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,63 +67,57 @@ class GameViewController: BaseViewController {
     
     //MARK: - Methods
     private func initialStateView() {
-        setNavigationTitle = "Preparing"
+        setNavigationTitle = "Preparing..."
 //        view.addSubview(bgrndImageView)
 //        bgrndImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
-    override func backButtonAction(_ sender: UIButton) {
-        super.backButtonAction(sender)
-        
-    }
-    
-    override func pauseButtonAction(_ sender: UIButton) {
-        super.pauseButtonAction(sender)
-        if isGameRunning {
-            pause()
-        } else {
-            unpause()
+    private func setUserSetting() {
+        do {
+            let userSetting = try dataManager.load(by: .userSettingData)
+//            self.userSetting = userSetting
+            self.isBackground = userSetting.isBackground
+            self.gameTime = userSetting.gameTime
+            self.durationTime = userSetting.durationTime
+        } catch {
+            // !!!: Delete Moc Uset setting
+            isBackground = true
+            gameTime = 30
+            durationTime = 5
+            
+            print(error.localizedDescription)
         }
     }
     
-    private func pause() {
+    private func pauseGame() {
         toggleVisualEffectView()
         isGameRunning = false
         timer?.invalidate()
         timer = nil
     }
     
-    private func unpause() {
+    private func playGame() {
         toggleVisualEffectView()
         isGameRunning = true
         startGame()
     }
     
     private func startGame() {
-        timer = Self.makeGameTimer(target: self, selector: #selector(repeatTimer))
+        timer = Timer.scheduledTimer(
+            timeInterval: 1.0, // game speed
+            target: self,
+            selector: #selector(repeatTimer),
+            userInfo: nil,
+            repeats: true
+        )
+        timer?.tolerance = 0.2
     }
     
     
     //MARK: - Visual Blur Effect View
     private func createVisualEffect() {
-        let blurEffect = UIBlurEffect(style: .light)
-        visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
-        visualEffectView.contentView.addSubview(pauseLabel)
         view.addSubview(visualEffectView)
-        visualEffectView.isHidden = true
-        NSLayoutConstraint.activate([
-            
-            visualEffectView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
-            visualEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            visualEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            visualEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            pauseLabel.centerXAnchor.constraint(equalTo: visualEffectView.centerXAnchor),
-            pauseLabel.centerYAnchor.constraint(equalTo: visualEffectView.centerYAnchor),
-            pauseLabel.widthAnchor.constraint(equalTo: visualEffectView.widthAnchor, multiplier: 0.5),
-            pauseLabel.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        visualEffectView.frame = collectionView.frame
     }
     
     private func toggleVisualEffectView() {
@@ -125,13 +132,25 @@ class GameViewController: BaseViewController {
         }
     }
     
-    //MARK: - Timer Impl
+    // MARK: - Override Methods
+    override func backButtonAction(_ sender: UIButton) {
+        super.backButtonAction(sender)
+        
+    }
+    
+    override func pauseButtonAction(_ sender: UIButton) {
+        super.pauseButtonAction(sender)
+        if isGameRunning {
+            pauseGame()
+        } else {
+            playGame()
+        }
+    }
+    
+    //MARK: - Timer Imp
     @objc func repeatTimer() {
         gameTime -= 1
-        let minutes = gameTime / 60
-        let seconds = gameTime % 60
-        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
-        setNavigationTitle = formattedTime
+        setNavigationTitle = gameTime.toStringTimeFormat()
         
         if gameTime <= 0 {
             isHiddenPauseButton = true
@@ -141,7 +160,7 @@ class GameViewController: BaseViewController {
             return
         }
         
-        let num = gameTime % 3
+        let num = gameTime % durationTime
         if num == 0 {
             print("true")
             collectionView.reloadData()
@@ -190,47 +209,50 @@ extension GameViewController: UICollectionViewDataSource {
         1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: String(describing: CustomCell.self),
             for: indexPath
         ) as! CustomCell
-        //        let config = gamePlay.getConfig()
         
-        if gameWithBG {
+        switch isBackground {
+        case true:
             let config = gamePlay.getConfig()
             cell.configure(text: config.text, and: config.color)
-        } else {
+        case false:
             let config = gamePlay.getConfigNoBg()
             cell.configure(text: config.text, and: config.color)
         }
         
-//        cell.configure(text: config.text, and: config.color)
         return cell
     }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
 extension GameViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        
         let width = self.collectionView.bounds.width - 150
         let height = self.collectionView.bounds.height - 50
         let top: CGFloat = Double.random(in: 0...height)
         let left: CGFloat = Double.random(in: 0...width)
+        
         return .init(top: top, left: left, bottom: 0, right: 0)
     }
 }
 
-extension GameViewController {
-    static func makeGameTimer(target: Any, selector: Selector) -> Timer {
-        let timer = Timer.scheduledTimer(
-            timeInterval: 1.0,
-            target: target,
-            selector: selector,
-            userInfo: nil,
-            repeats: true
-        )
-        timer.tolerance = 0.2
-        return timer
+extension Int {
+    func toStringTimeFormat() -> String {
+        let minutes = self / 60
+        let seconds = self % 60
+        return String(format: "%02d:%02d", minutes, seconds)
     }
 }

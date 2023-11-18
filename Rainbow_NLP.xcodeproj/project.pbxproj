@@ -21,6 +21,7 @@
 		10ACDB1D2B084D120049360A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB192B084D120049360A /* GameViewController.swift */; };
 		10ACDB1E2B084D120049360A /* GamePlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB1A2B084D120049360A /* GamePlayModel.swift */; };
 		10ACDB202B084D120049360A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB1C2B084D120049360A /* CustomCell.swift */; };
+		10C94E692B09074100164152 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C94E682B09074100164152 /* VisualEffectView.swift */; };
 		10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */; };
 		10CB8EFF2B0147DE00CFC8D6 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8EFE2B0147DE00CFC8D6 /* GameResult.swift */; };
 		10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */; };
@@ -57,6 +58,7 @@
 		10ACDB192B084D120049360A /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		10ACDB1A2B084D120049360A /* GamePlayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayModel.swift; sourceTree = "<group>"; };
 		10ACDB1C2B084D120049360A /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		10C94E682B09074100164152 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		10CB8EFC2B01474D00CFC8D6 /* UserSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSetting.swift; sourceTree = "<group>"; };
 		10CB8EFE2B0147DE00CFC8D6 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
 		10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				10ACDB1C2B084D120049360A /* CustomCell.swift */,
 				10ACDB1A2B084D120049360A /* GamePlayModel.swift */,
 				10ACDB192B084D120049360A /* GameViewController.swift */,
+				10C94E682B09074100164152 /* VisualEffectView.swift */,
 			);
 			path = GameModule;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				10CB8F132B01B95C00CFC8D6 /* CustomNavigationView.swift in Sources */,
 				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
+				10C94E692B09074100164152 /* VisualEffectView.swift in Sources */,
 				1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
 				10ACDB202B084D120049360A /* CustomCell.swift in Sources */,

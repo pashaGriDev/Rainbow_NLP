@@ -11,11 +11,6 @@ class GamePlayModel {
     let colors: [UIColor] = [.red, .yellow, .orange, .purple, .blue, .black]
     let colorNames: [String] = ["Red", "Yellow", "Orange", "Purple", "Blue", "Black"]
     
-    enum GameMode {
-        case withBG
-        case noBg
-    }
-    
     func getConfig() -> (text: String, color: UIColor) {
         return (text: colorNames.randomElement()!, color: colors.randomElement()!)
     }
