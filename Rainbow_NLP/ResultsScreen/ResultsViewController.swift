@@ -24,8 +24,8 @@ class ResultsViewController: BaseViewController {
         collectionView.backgroundColor = .lightGray
         return collectionView
     }()
-    var cleanStatisticsButtonView = UIView()
-    let cleanStatisticsButton: UIButton = .makeButton(
+    private var bottomView = UIView()
+    let cleanButton: UIButton = .makeButton(
         text: "Очистить статистику",
         and: .newGameButtonColor
     )
@@ -35,7 +35,7 @@ class ResultsViewController: BaseViewController {
         super.viewDidLoad()
         setViews()
         setupConstraints()
-        cleanStatisticsButton.addTarget(
+        cleanButton.addTarget(
             self,
             action: #selector(cleanStatisticsButtonAction),
             for: .touchUpInside
@@ -52,11 +52,11 @@ class ResultsViewController: BaseViewController {
     
     private func setViews() {
         setNavigationTitle = "Статистика"
-        view.backgroundColor = .lightGray
-        view.addSubview(collectionView, cleanStatisticsButton, cleanStatisticsButtonView)
-        cleanStatisticsButtonView.addSubview(cleanStatisticsButton)
+//        view.backgroundColor = .lightGray
+        view.addSubview(collectionView, bottomView)
+        bottomView.addSubview(cleanButton)
         isHiddenPauseButton = true
-        cleanStatisticsButtonView.backgroundColor = .clear
+        bottomView.backgroundColor = .gray
     }
     
     override func backButtonAction(_ sender: UIButton) {
@@ -66,7 +66,7 @@ class ResultsViewController: BaseViewController {
     
     //MARK: - Constraints
     private func setupConstraints(){
-        [collectionView, cleanStatisticsButton, cleanStatisticsButtonView].forEach {
+        [collectionView, cleanButton, bottomView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -76,14 +76,14 @@ class ResultsViewController: BaseViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            cleanStatisticsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            cleanStatisticsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3),
-            cleanStatisticsButton.heightAnchor.constraint(equalToConstant: 63),
-            cleanStatisticsButton.widthAnchor.constraint(equalToConstant: 268),
+            cleanButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            cleanButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            cleanButton.heightAnchor.constraint(equalToConstant: 63),
+            cleanButton.widthAnchor.constraint(equalToConstant: 268),
             
-            cleanStatisticsButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            cleanStatisticsButtonView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
-            cleanStatisticsButtonView.widthAnchor.constraint(equalTo: view.widthAnchor)
+            bottomView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            bottomView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
     
