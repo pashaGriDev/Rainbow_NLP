@@ -24,7 +24,7 @@ class ResultsViewController: BaseViewController {
         collectionView.backgroundColor = .lightGray
         return collectionView
     }()
-    
+    var cleanStatisticsButtonView = UIView()
     let cleanStatisticsButton: UIButton = .makeButton(
         text: "Очистить статистику",
         and: .newGameButtonColor
@@ -53,8 +53,10 @@ class ResultsViewController: BaseViewController {
     private func setViews() {
         setNavigationTitle = "Статистика"
         view.backgroundColor = .lightGray
-        view.addSubview(collectionView, cleanStatisticsButton)
+        view.addSubview(collectionView, cleanStatisticsButton, cleanStatisticsButtonView)
+        cleanStatisticsButtonView.addSubview(cleanStatisticsButton)
         isHiddenPauseButton = true
+        cleanStatisticsButtonView.backgroundColor = .clear
     }
     
     override func backButtonAction(_ sender: UIButton) {
@@ -64,7 +66,7 @@ class ResultsViewController: BaseViewController {
     
     //MARK: - Constraints
     private func setupConstraints(){
-        [collectionView, cleanStatisticsButton].forEach {
+        [collectionView, cleanStatisticsButton, cleanStatisticsButtonView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
         
@@ -78,6 +80,10 @@ class ResultsViewController: BaseViewController {
             cleanStatisticsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -3),
             cleanStatisticsButton.heightAnchor.constraint(equalToConstant: 63),
             cleanStatisticsButton.widthAnchor.constraint(equalToConstant: 268),
+            
+            cleanStatisticsButtonView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            cleanStatisticsButtonView.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
+            cleanStatisticsButtonView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
     }
     
