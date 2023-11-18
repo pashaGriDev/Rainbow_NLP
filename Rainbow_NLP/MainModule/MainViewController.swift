@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
         mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
         mainView.resultButton.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
         mainView.settingButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        mainView.continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
         mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
     }
 }
@@ -35,6 +36,8 @@ class MainViewController: UIViewController {
 @objc extension MainViewController {
     func newGameButtonTapped() {
         print ("Go to new game")
+        let vc = GameViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func rulesButtonTapped(_ sender: UIButton) {
@@ -44,6 +47,12 @@ class MainViewController: UIViewController {
     func settingsButtonTapped(_ sender: UIButton) {
         let vc = SettingsViewController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func continueButtonTapped(_ sender: UIButton) {
+        let vc = GameViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        print ("Go back to game")
     }
     
     func resultButtonTapped(_ sender: UIButton) {

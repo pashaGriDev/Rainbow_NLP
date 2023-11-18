@@ -8,11 +8,19 @@
 import UIKit
 
 class ResultsViewController: BaseViewController {
+    // MARK: - Public properties
+    var lastGameResult: GameResult?
     
-    var gameStatistics = GameStatistics.getMocResult()
+    // MARK: - Private properties
+    private var gameResults: [GameResult] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    private let dataManager = DataManager<[GameResult]>()
     
     //MARK: - UI Elements
-    let collectionView: UICollectionView = {
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.sectionInset = .init(top: 20, left: 0, bottom: 0, right: 0)
@@ -24,8 +32,8 @@ class ResultsViewController: BaseViewController {
         collectionView.backgroundColor = .lightGray
         return collectionView
     }()
-    private var bottomView = UIView()
-    let cleanButton: UIButton = .makeButton(
+    
+    private let cleanStatisticsButton: UIButton = .makeButton(
         text: "Очистить статистику",
         and: .newGameButtonColor
     )
@@ -43,9 +51,20 @@ class ResultsViewController: BaseViewController {
         collectionView.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        do {
+            let results = try dataManager.load(by: .userResultData)
+            gameResults = results.reversed()
+        } catch {
+            print(error.localizedDescription)
+            gameResults = GameResult.getMocResult().reversed()
+        }
+    }
+    
     //MARK: - Methods
     @objc func cleanStatisticsButtonAction() {
-        gameStatistics = []
+        gameResults = []
         collectionView.reloadData()
         
     }
@@ -92,7 +111,7 @@ class ResultsViewController: BaseViewController {
 // MARK: UICollectionViewDataSource
 extension ResultsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        gameStatistics.count
+        gameResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,9 +121,9 @@ extension ResultsViewController: UICollectionViewDataSource {
         }
         cell.backgroundColor = #colorLiteral(red: 0.8981253366, green: 0.8981253366, blue: 0.8981253366, alpha: 1)
         cell.layer.cornerRadius = 12
-        cell.gameNumberLabel.text = gameStatistics[indexPath.row].numberString
+        cell.gameNumberLabel.text = gameResults[indexPath.row].numberString
         cell.gameNumberLabel.textColor = #colorLiteral(red: 0.9118689299, green: 0.1904129386, blue: 0.753595531, alpha: 1)
-        cell.gameTimeLabel.text = gameStatistics[indexPath.row].timeString
+        cell.gameTimeLabel.text = gameResults[indexPath.row].timeString
         
         return cell
     }
