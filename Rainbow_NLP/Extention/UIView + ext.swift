@@ -45,4 +45,25 @@ extension UIView {
         let label = UILabel()
         return label
     }
+    
+    enum GradientDirection {
+        case horizontal
+        case vertical
+    }
+
+    func createGradientLayer(from startColor: UIColor, to endColor: UIColor, direction: GradientDirection, frame: CGRect) -> CAGradientLayer {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = frame
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        
+        switch direction {
+        case .horizontal:
+            gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.5)
+        case .vertical:
+            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        }
+        return gradientLayer
+    }
 }
