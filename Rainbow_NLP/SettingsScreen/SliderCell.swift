@@ -10,6 +10,7 @@ import UIKit
 private struct Constants {
     static let cornerRadius: CGFloat = 10
     static let defaultPadding: CGFloat = 16
+    static let elementsSpacing: CGFloat = 25
 }
 
 class SliderCell: UICollectionViewCell {
@@ -66,12 +67,12 @@ extension SliderCell {
             }
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding),
-            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            slider.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: Constants.defaultPadding),
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.defaultPadding),
+            slider.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.defaultPadding),
             slider.trailingAnchor.constraint(equalTo: valueLabel.leadingAnchor, constant: -Constants.defaultPadding),
-            slider.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            slider.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: Constants.elementsSpacing),
             valueLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.defaultPadding),
-            valueLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            valueLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: Constants.elementsSpacing)
         ])
     }
 }

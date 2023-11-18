@@ -13,7 +13,7 @@ private struct Constants {
     static let defaultPadding: CGFloat = 16
     static let mediumPadding: CGFloat = 20
     static let largePadding: CGFloat = 50
-    static let basicHeight: CGFloat = 50
+    static let basicHeight: CGFloat = 80
     static let cellSpacing: CGFloat = 10
 }
 
