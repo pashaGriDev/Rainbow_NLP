@@ -22,28 +22,28 @@ final class SettingsViewController: BaseViewController {
     //MARK: - Settings parameters config
     var parameters: [Parameter] = [
         Parameter(
-            name: "Game time, sec",
+            name: "Время игры, сек",
             defaultValue: Float(10),
             type: .sliderCell,
             minValue: 2,
             maxValue: 60
         ),
         Parameter(
-            name: "Change speed, sec",
+            name: "Скорость смены заданий, сек",
             defaultValue: Float(2),
             type: .sliderCell,
             minValue: 1,
             maxValue: 5
         ),
         Parameter(
-            name: "Enable layer",
+            name: "Подложка для букв",
             defaultValue: true,
             type: .switchCell,
             minValue: nil,
             maxValue: nil
         ),
         Parameter(
-            name: "Random word position",
+            name: "Случайное положение слов",
             defaultValue: false,
             type: .switchCell,
             minValue: nil,
@@ -73,7 +73,7 @@ final class SettingsViewController: BaseViewController {
     
     private lazy var restoreDefaultsButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Restore Defaults", for: .normal)
+        button.setTitle("Значения по умолчанию", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .red
         button.layer.cornerRadius = Constants.cornerRadius
@@ -105,7 +105,7 @@ final class SettingsViewController: BaseViewController {
     }
     
     private func setViews() {
-        setNavigationTitle = "Settings"
+        setNavigationTitle = "Настройки"
         view.backgroundColor = .lightGray
         view.addSubview(collectionView, restoreDefaultsButton)
         isHiddenPauseButton = true
