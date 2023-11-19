@@ -23,16 +23,6 @@ class GameViewController: BaseViewController {
     private var visualEffectView: UIVisualEffectView = VisualEffectView(effect: UIBlurEffect(style: .light))
     private var isVisualEffectViewHidden = true
     
-    private lazy var backgroundImageView: UIImageView = {
-        let element = UIImageView()
-        element.image = UIImage(named: "gameBgrnd")
-        element.contentMode = .scaleAspectFill
-        element.alpha = 0.3
-        element.translatesAutoresizingMaskIntoConstraints = false
-        return element
-    }()
-    
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,8 +40,6 @@ class GameViewController: BaseViewController {
     //MARK: - Methods
     private func initialStateView() {
         setNavigationTitle = ""
-        view.addSubview(backgroundImageView)
-        backgroundImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
     private func setUserSetting() {

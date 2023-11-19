@@ -39,7 +39,7 @@ final class SettingsViewController: BaseViewController {
             SwitchCell.self,
             forCellWithReuseIdentifier: String(describing: SwitchCell.self)
         )
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
