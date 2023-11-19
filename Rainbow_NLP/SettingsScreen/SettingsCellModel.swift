@@ -45,7 +45,7 @@ extension CellSource {
                     title: "Время игры, сек",
                     sliderValue: 30,
                     minValue: 10,
-                    maxValue: 60
+                    maxValue: 120
                 )
             ),
             .elementShowTimeCell(

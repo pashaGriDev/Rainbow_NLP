@@ -19,12 +19,9 @@ private struct Constants {
 
 final class SettingsViewController: BaseViewController {
     // MARK: - Private properties
-    private var gameTime: Float = 30
-    private var gameDurationTime: Float = 3
-    private var isBackgroundInGame: Bool = true
+    private var userSetting = UserSetting()
     
-    /// Settings parameters config
-    private var source: [CellSource] = []
+    private var source: [CellSource] = CellSource.defaultValue()
     private let dataManager = DataManager<UserSetting>()
 
     private let collectionView: UICollectionView = {
@@ -67,22 +64,43 @@ final class SettingsViewController: BaseViewController {
         setViews()
         setupConstraints()
         setDelegates()
-        // загрузка сохраненных настроек
+        
+        do {
+            let setting = try dataManager.load(by: .userSettingData)
+            print(String(describing: setting))
+            userSetting = setting
+            // можно перенести настройки в ячейку
+            source.enumerated().forEach { index, value in
+                switch value {
+                case .playTimeCell(var valueCell):
+                    let newValue = Float(userSetting.gameTime)
+                    valueCell.sliderValue = newValue
+                    source[index] = .playTimeCell(valueCell)
+                case .elementShowTimeCell(var valueCell):
+                    let newValue = Float(userSetting.durationTime)
+                    valueCell.sliderValue = newValue
+                    source[index] = .elementShowTimeCell(valueCell)
+                case .hasBackgroundCell(var valueCell):
+                    valueCell.switchValue = userSetting.isBackground
+                    source[index] = .hasBackgroundCell(valueCell)
+                }
+            }
+            collectionView.reloadData()
+            
+            print("Loading of the user configuration was completed successfully")
+        } catch {
+            print(error.localizedDescription, "Loading default user setting")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        let userSetting = UserSetting(
-//            gameTime: <#T##Int#>,
-//            durationTime: <#T##Int#>,
-//            isBackground: <#T##Bool#>
-//        )
-//        do {
-//            try dataManager.save(userSetting, by: .userSettingData)
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-        print(#function)
+        // Сохранение настроек пользователя
+        do {
+            try dataManager.save(self.userSetting, by: .userSettingData)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     // MARK: - Override Methods
@@ -94,21 +112,28 @@ final class SettingsViewController: BaseViewController {
     //MARK: - Methods
     @objc private func restoreDefaultsButtonTapped() {
         // установить значения по умолчанию
-        source = CellSource.defaultValue()
-        collectionView.reloadData()
+        guard !source.isEmpty else { return }
+        
+        let defaultSetting = CellSource.defaultValue()
 
+        defaultSetting.enumerated().forEach { index, value in
+            switch value {
+            case .playTimeCell(let parameters):
+                let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! SliderCell
+                cell.configure(with: parameters)
+            case .elementShowTimeCell(let parameters):
+                let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! SliderCell
+                cell.configure(with: parameters)
+            case .hasBackgroundCell(let parameters):
+                let cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! SwitchCell
+                cell.configure(with: parameters)
+            }
+        }
+        
         // Анимация
         UIView.animate(withDuration: 1) {
             self.view.layoutIfNeeded()
         }
-        
-//        for (index, parameter) in parameters.enumerated() {
-//            if let sliderCell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SliderCell {
-//                sliderCell.configure(with: parameter)
-//            } else if let switchCell = collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? SwitchCell {
-//                switchCell.configure(with: parameter)
-//            }
-//        }
     }
     
     private func setViews() {
@@ -128,9 +153,11 @@ extension SettingsViewController: SliderCellDelegate {
     func getSliderData(_ cell: UICollectionViewCell, value: Float) {
         switch cell.tag {
         case 0: // cell is time slider
-            print("time: \(value)")
+//            print("time: \(Int(value))")
+            userSetting.gameTime = Int(value)
         case 1: // cell is time duration slider
-            print("speed: \(value)")
+//            print("duration: \(Int(value))")
+            userSetting.durationTime = Int(value)
         default: return
         }
     }
@@ -139,8 +166,8 @@ extension SettingsViewController: SliderCellDelegate {
 extension SettingsViewController: SwitchCellDelegate {
     func switchHandler(_ cell: SwitchCell, value: Bool) {
         switch cell.tag {
-        case 2: // cell is background switch
-            print("background is \(value)")
+        case 2:
+            userSetting.isBackground = value
         default: return
         }
     }
@@ -165,6 +192,7 @@ extension SettingsViewController: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SliderCell.self),
                 for: indexPath
             ) as! SliderCell
+            cell.tag = indexPath.row
             cell.delegate = self
             cell.configure(with: parameters)
             return cell
@@ -174,6 +202,7 @@ extension SettingsViewController: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SliderCell.self),
                 for: indexPath
             ) as! SliderCell
+            cell.tag = indexPath.row
             cell.delegate = self
             cell.configure(with: parameters)
             return cell
@@ -183,33 +212,11 @@ extension SettingsViewController: UICollectionViewDataSource {
                 withReuseIdentifier: String(describing: SwitchCell.self),
                 for: indexPath
             ) as! SwitchCell
+            cell.tag = indexPath.row
             cell.delegate = self
             cell.configure(with: parameters)
             return cell
         }
-        
-//        let parameter = parameters[indexPath.item]
-//        
-//        switch parameter.type {
-//        case .sliderCell:
-//            let sliderCell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: String(describing: SliderCell.self),
-//                for: indexPath
-//            ) as! SliderCell
-//            sliderCell.configure(with: parameter)
-//            sliderCell.delegate = self
-//            sliderCell.tag = indexPath.row
-//            return sliderCell
-//        case .switchCell:
-//            let switchCell = collectionView.dequeueReusableCell(
-//                withReuseIdentifier: String(describing: SwitchCell.self),
-//                for: indexPath
-//            ) as! SwitchCell
-//            switchCell.configure(with: parameter)
-//            switchCell.delegate = self
-//            switchCell.tag = indexPath.row
-//            return switchCell
-//        }
     }
 }
 

@@ -24,14 +24,14 @@ class SliderCell: UICollectionViewCell {
     //MARK: - UI Elements
     private let nameLabel = makeLabel()
     private let valueLabel = makeLabel()
-    private let slider: UISlider = {
-        let slider = UISlider()
-        return slider
-    }()
+    private let slider = UISlider()
+//        let slider = UISlider()
+//        return slider
+//    }()
     
-    private var minValue: Float = 0
-    private var maxValue: Float = 0
-    private var defaultValue: Float = 0
+//    private var minValue: Float = 0
+//    private var maxValue: Float = 0
+//    private var defaultValue: Float = 0
     
     //MARK: - LifeCycle
     override init(frame: CGRect) {
@@ -50,9 +50,9 @@ class SliderCell: UICollectionViewCell {
     //MARK: - Private methods
     @objc private func sliderValueChanged() {
         // почитать как отсекать все значения после запятой
-        let value = round(slider.value)
-        delegate?.getSliderData(self, value: value)
-        valueLabel.text = "\(Int(value))"
+//        let value = round(slider.value)
+        delegate?.getSliderData(self, value: slider.value)
+        valueLabel.text = "\(Int(slider.value))"
     }
     
     //MARK: - Cell config

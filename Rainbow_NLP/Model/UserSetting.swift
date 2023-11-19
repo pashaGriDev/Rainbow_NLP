@@ -8,10 +8,10 @@
 import Foundation
 
 struct UserSetting: Codable {
-    let gameTime: Int
+    var gameTime: Int
     ///  продолжительность отображения ячейки
-    let durationTime: Int
-    let isBackground: Bool
+    var durationTime: Int
+    var isBackground: Bool
     
     init(
         gameTime: Int = 30,
