@@ -29,7 +29,7 @@ class ResultsViewController: BaseViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ResultsCell.self, forCellWithReuseIdentifier: "\(ResultsCell.self)")
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
     
