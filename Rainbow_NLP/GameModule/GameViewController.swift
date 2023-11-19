@@ -57,8 +57,6 @@ class GameViewController: BaseViewController {
     //MARK: - Methods
     private func initialStateView() {
         setNavigationTitle = ""
-        view.addSubview(backgroundImageView)
-        backgroundImageView.pinToNav(to: view, nav: navigationBarView)
     }
     
     private func setUserSetting() {
