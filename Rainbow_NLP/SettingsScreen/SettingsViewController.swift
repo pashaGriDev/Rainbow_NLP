@@ -43,11 +43,13 @@ final class SettingsViewController: BaseViewController {
         return collectionView
     }()
     
+    
     private lazy var restoreDefaultsButton: UIButton = {
         let button = UIButton()
         button.setTitle("Значения по умолчанию", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .red
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        button.backgroundColor = .newGameButtonColor
         button.layer.cornerRadius = Constants.cornerRadius
         button.addTarget(self, action: #selector(restoreDefaultsButtonTapped), for: .touchUpInside)
         return button
@@ -254,7 +256,7 @@ extension SettingsViewController {
             restoreDefaultsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.largePadding),
             restoreDefaultsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.largePadding),
             restoreDefaultsButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.defaultPadding),
-            restoreDefaultsButton.heightAnchor.constraint(equalToConstant: Constants.basicHeight)
+            restoreDefaultsButton.heightAnchor.constraint(equalToConstant: 63)
         ])
     }
 }
