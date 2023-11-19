@@ -1,7 +1,7 @@
 # DevRush Marathon X Challenge #1 - Rainbow_NLP
 ![GitHub repo size](https://img.shields.io/github/repo-size/pashaGriDev/Rainbow_NLP)  ![GitHub contributors](https://img.shields.io/github/contributors/pashaGriDev/Rainbow_NLP)   ![GitHub last commit](https://img.shields.io/github/last-commit/pashaGriDev/Rainbow_NLP) ![][ios] ![][swift] ![][uikit]
 
-![](https://github.com/DanilaBolshakov1999/CHALLENGE_2_Best_Recipes/blob/development/readmeVideo.gif)
+![](https://github.com/pashaGriDev/Rainbow_NLP/blob/develop/ezgif.com-video-to-gif.gif)
 
 ---
 ### The application was created as part of the DevRush Marathon X (https://t.me/devrush_community/13663).
