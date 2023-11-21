@@ -14,9 +14,38 @@ extension UIView {
         }
     }
     
-    func setupView(_ view: UIView) {
-        addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
+    /// Add a subview, constrained to the specified top, left, bottom and right margins.
+    ///
+    /// - Parameters:
+    ///   - view: The subview to add.
+    ///   - top: Optional top margin constant.
+    ///   - left: Optional left (leading) margin constant.
+    ///   - bottom: Optional bottom margin constant.
+    ///   - right: Optional right (trailing) margin constant.
+    ///
+    func addConstraint(subview: UIView,
+        top: CGFloat? = 0,
+        left: CGFloat? = 0,
+        right: CGFloat? = 0,
+        bottom: CGFloat? = 0
+    ) {
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(subview)
+        
+        if let top {
+            subview.topAnchor.constraint(equalTo: topAnchor, constant: top).isActive = true
+        }
+        if let left {
+            subview.leadingAnchor.constraint(equalTo: leadingAnchor, constant: left).isActive = true
+        }
+        if let right {
+            subview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -right).isActive = true
+        }
+        if let bottom {
+            subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottom).isActive = true
+        }
+        
+        
     }
     
     func pin(to superView: UIView) {

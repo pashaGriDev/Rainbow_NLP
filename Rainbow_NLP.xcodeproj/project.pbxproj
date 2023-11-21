@@ -145,18 +145,18 @@
 		1078D1B22B0116CD00A265D0 /* Rainbow_NLP */ = {
 			isa = PBXGroup;
 			children = (
-				10ACDB182B084CEB0049360A /* GameModule */,
 				102959672B02C146002D27D9 /* Application */,
-				10CB8F162B01B9B200CFC8D6 /* Extention */,
 				101F8B102B06A83F0021EE21 /* MainModule */,
+				10ACDB182B084CEB0049360A /* GameModule */,
 				373D2A872B0278D600E4EE27 /* SettingsScreen */,
 				92B846892B03D375008286D8 /* ResultsScreen */,
 				101FE3B82B058D9800BBB7FC /* DataManager */,
-				10CB8F112B01B93C00CFC8D6 /* Components */,
 				10CB8F0D2B01B8C500CFC8D6 /* BaseViewController.swift */,
 				37E066212B094A9800C18F38 /* RulesScreen */,
 				10CB8F0C2B01B88D00CFC8D6 /* TestModule */,
 				10CB8EFB2B01473C00CFC8D6 /* Model */,
+				10CB8F112B01B93C00CFC8D6 /* Components */,
+				10CB8F162B01B9B200CFC8D6 /* Extention */,
 				2CD5D0082B05316100B37157 /* SF-Pro-Display-Regular.otf */,
 				2CD5D0062B05314A00B37157 /* CormorantInfant-Regular.ttf */,
 				1078D1BC2B0116CE00A265D0 /* Assets.xcassets */,
