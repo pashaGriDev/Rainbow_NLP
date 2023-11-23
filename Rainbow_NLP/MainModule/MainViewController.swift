@@ -8,8 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    
-    let mainView = MainView()
+    private let mainView: MainViewProtocol = MainView()
     
     override func loadView() {
         super.loadView()
@@ -17,18 +16,18 @@ class MainViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setup()
-        navigationController?.navigationBar.isHidden = true
     }
     
     func setup() {
+        navigationController?.navigationBar.isHidden = true
+        
         mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
-        mainView.resultButton.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
-        mainView.settingButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
-        mainView.continueButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
-        mainView.rulesButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
+        mainView.resultGameButton.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
+        mainView.settingGameButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        mainView.continueGameButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+        mainView.rulesGameButton.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
     }
 }
 

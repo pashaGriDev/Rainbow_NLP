@@ -7,12 +7,30 @@
 
 import UIKit
 
-class MainView: UIView {
+// дизайн сомнительный потому пока не трогаю!!!
+
+protocol MainViewProtocol: UIView {
+    var newGameButton: UIButton { get }
+    var continueGameButton: UIButton { get }
+    var resultGameButton: UIButton { get }
+    var settingGameButton: CustomButton { get }
+    var rulesGameButton: CustomButton { get }
+}
+
+final class MainView: UIView, MainViewProtocol {
     private struct Drawing {
         static let buttonSize: CGFloat = 50.0
         static let buttonPadding: CGFloat = 50.0
         static let buttonSpacing: CGFloat = 20.0
     }
+    
+    // MARK: - Public UI
+    let newGameButton: UIButton = .makeButton(text: "Новая игра", and: .newGameButtonColor)
+    let continueGameButton: UIButton = .makeButton(text: "Продолжить", and: .newContinueButtonColor)
+    let resultGameButton: UIButton = .makeButton(text: "Статистика", and: .newStatsButtonColor)
+    let settingGameButton: CustomButton = .init(style: .setting, color: .downButtons)
+    let rulesGameButton: CustomButton = .init(style: .rules, color: .downButtons)
+    
     // MARK: - Private UI
     private let rainbowImage = MainView.makeRainbowImage()
     private let nlpLabel: UILabel = .makeLabel(
@@ -27,7 +45,9 @@ class MainView: UIView {
         fontName: .cormorant
     )
     private lazy var buttonContainer: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [newGameButton, continueButton, resultButton])
+        let stackView = UIStackView(
+            arrangedSubviews: [newGameButton, continueGameButton, resultGameButton]
+        )
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -35,21 +55,15 @@ class MainView: UIView {
         return stackView
     }()
     
-    // MARK: - Public UI
-    let newGameButton: UIButton = .makeButton(text: "Новая игра", and: .newGameButtonColor)
-    let resultButton: UIButton = .makeButton(text: "Статистика", and: .newStatsButtonColor)
-    let continueButton: UIButton = .makeButton(text: "Продолжить", and: .newContinueButtonColor)
-    let settingButton: CustomButton = .init(style: .setting, color: .downButtons)
-    let rulesButton: CustomButton = .init(style: .rules, color: .downButtons)
-    
     // MARK: - init(_:)
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.backgroundColor = .backgroundColor
         addSubview(
             rainbowImage,
-            settingButton,
-            rulesButton,
+            settingGameButton,
+            rulesGameButton,
             nlpLabel,
             rainbowLabel,
             buttonContainer
@@ -57,23 +71,24 @@ class MainView: UIView {
         setLayout()
     }
     
-    // MARK: - Life cycle
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - Private Methods
-    private func setLayout() {
+}
+
+// MARK: - Private extension
+private extension MainView{
+    func setLayout() {
         [
             rainbowImage,
             nlpLabel,
             rainbowLabel,
-            settingButton,
-            rulesButton,
+            settingGameButton,
+            rulesGameButton,
             buttonContainer,
             newGameButton,
-            resultButton,
-            continueButton
+            rulesGameButton,
+            continueGameButton
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -100,23 +115,17 @@ class MainView: UIView {
              buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.buttonPadding),
              buttonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: 400),
              
-             settingButton.topAnchor.constraint(lessThanOrEqualTo: buttonContainer.bottomAnchor, constant: 20),
-             settingButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
-             settingButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
-             settingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
-             settingButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+             settingGameButton.topAnchor.constraint(lessThanOrEqualTo: buttonContainer.bottomAnchor, constant: 20),
+             settingGameButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
+             settingGameButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
+             settingGameButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 28),
+             settingGameButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
              
-             rulesButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
-             rulesButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
-             rulesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26),
-             rulesButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+             rulesGameButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),
+             rulesGameButton.heightAnchor.constraint(equalToConstant: Drawing.buttonSize),
+             rulesGameButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26),
+             rulesGameButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
             ])
-        let backgroundImage = UIImage(named: "rainbowBackground")
-        self.backgroundColor = UIColor(patternImage: backgroundImage!)
-        
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
