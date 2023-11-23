@@ -8,7 +8,23 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    private let mainView: MainViewProtocol = MainView()
+    // MARK: - Dependencies
+    private let mainView: MainViewProtocol
+    private let presenter: MainPresenterProtocol
+    
+    // MARK: - init(_:)
+    init(
+        mainView: MainViewProtocol = MainView(),
+        presenter: MainPresenterProtocol = MainPresenter()
+    ) {
+        self.mainView = mainView
+        self.presenter = presenter
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         super.loadView()
@@ -34,30 +50,39 @@ class MainViewController: UIViewController {
 
 @objc extension MainViewController {
     func newGameButtonTapped() {
-        print ("Go to new game")
-        let vc = GameViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter.tappedNewGameButton()
+//        print ("Go to new game")
+//        let vc = GameViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func rulesButtonTapped(_ sender: UIButton) {
-        print ("Go to rules")
-        let vc = RulesViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter.tappedRulesGameButton()
+
+//        print ("Go to rules")
+//        let vc = RulesViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func settingsButtonTapped(_ sender: UIButton) {
-        let vc = SettingsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter.tappedSettingGameButton()
+
+//        let vc = SettingsViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func continueButtonTapped(_ sender: UIButton) {
-        let vc = GameViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        print ("Go back to game")
+        presenter.tappedContinueGameButton()
+
+//        let vc = GameViewController()
+//        navigationController?.pushViewController(vc, animated: true)
+//        print ("Go back to game")
     }
     
     func resultButtonTapped(_ sender: UIButton) {
-        let vc = ResultsViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        presenter.tappedResultGameButton()
+
+//        let vc = ResultsViewController()
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }
