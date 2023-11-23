@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainPresenterProtocol {
-//    init(_ router: Router)
+    var router: RouterProtocol { get }
     func tappedNewGameButton() -> Void
     func tappedContinueGameButton() -> Void
     func tappedResultGameButton() -> Void
@@ -21,12 +21,19 @@ protocol MainPresenterDelegate {
 }
 
 final class MainPresenter: MainPresenterProtocol {
+    // MARK: - Dependencies
+    let router: RouterProtocol
     
+    init(
+        _ router: RouterProtocol
+    ) {
+        self.router = router
+    }
 }
 
 extension MainPresenter {
     func tappedNewGameButton() {
-        print(#function)
+        router.pushGame()
     }
     
     func tappedContinueGameButton() {

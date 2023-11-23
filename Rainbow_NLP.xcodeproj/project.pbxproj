@@ -21,6 +21,8 @@
 		10AC5AE42B0D213A0062622C /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC5AE32B0D213A0062622C /* MainPresenter.swift */; };
 		10AC5AEC2B0F0EFC0062622C /* Rainbow_NLPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC5AEB2B0F0EFC0062622C /* Rainbow_NLPTests.swift */; };
 		10AC5AF32B0F0F3D0062622C /* MainPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC5AF22B0F0F3D0062622C /* MainPresenterTest.swift */; };
+		10AC5AF52B0F1B5E0062622C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC5AF42B0F1B5E0062622C /* Router.swift */; };
+		10AC5AF72B0F1B700062622C /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AC5AF62B0F1B700062622C /* Assembly.swift */; };
 		10ACDB1D2B084D120049360A /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB192B084D120049360A /* GameViewController.swift */; };
 		10ACDB1E2B084D120049360A /* GamePlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB1A2B084D120049360A /* GamePlayModel.swift */; };
 		10ACDB202B084D120049360A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10ACDB1C2B084D120049360A /* CustomCell.swift */; };
@@ -77,6 +79,8 @@
 		10AC5AE92B0F0EFC0062622C /* Rainbow_NLPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rainbow_NLPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		10AC5AEB2B0F0EFC0062622C /* Rainbow_NLPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rainbow_NLPTests.swift; sourceTree = "<group>"; };
 		10AC5AF22B0F0F3D0062622C /* MainPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterTest.swift; sourceTree = "<group>"; };
+		10AC5AF42B0F1B5E0062622C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		10AC5AF62B0F1B700062622C /* Assembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		10ACDB192B084D120049360A /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		10ACDB1A2B084D120049360A /* GamePlayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayModel.swift; sourceTree = "<group>"; };
 		10ACDB1C2B084D120049360A /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
@@ -145,6 +149,8 @@
 			children = (
 				1078D1B32B0116CD00A265D0 /* AppDelegate.swift */,
 				1078D1B52B0116CD00A265D0 /* SceneDelegate.swift */,
+				10AC5AF42B0F1B5E0062622C /* Router.swift */,
+				10AC5AF62B0F1B700062622C /* Assembly.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -197,9 +203,17 @@
 			isa = PBXGroup;
 			children = (
 				10AC5AEB2B0F0EFC0062622C /* Rainbow_NLPTests.swift */,
-				10AC5AF22B0F0F3D0062622C /* MainPresenterTest.swift */,
+				10AC5AF82B0F1ECD0062622C /* MainModule */,
 			);
 			path = Rainbow_NLPTests;
+			sourceTree = "<group>";
+		};
+		10AC5AF82B0F1ECD0062622C /* MainModule */ = {
+			isa = PBXGroup;
+			children = (
+				10AC5AF22B0F0F3D0062622C /* MainPresenterTest.swift */,
+			);
+			path = MainModule;
 			sourceTree = "<group>";
 		};
 		10ACDB182B084CEB0049360A /* GameModule */ = {
@@ -399,6 +413,7 @@
 				101FE3BA2B058DDC00BBB7FC /* DataManager.swift in Sources */,
 				10AC5AE42B0D213A0062622C /* MainPresenter.swift in Sources */,
 				1078D1B62B0116CD00A265D0 /* SceneDelegate.swift in Sources */,
+				10AC5AF72B0F1B700062622C /* Assembly.swift in Sources */,
 				10C94E692B09074100164152 /* VisualEffectView.swift in Sources */,
 				1056B64D2B052B6E0092A8E2 /* MainViewController.swift in Sources */,
 				10CB8EFD2B01474D00CFC8D6 /* UserSetting.swift in Sources */,
@@ -408,6 +423,7 @@
 				10CB8F0E2B01B8C500CFC8D6 /* BaseViewController.swift in Sources */,
 				10ACDB1D2B084D120049360A /* GameViewController.swift in Sources */,
 				1056B64B2B052B680092A8E2 /* MainView.swift in Sources */,
+				10AC5AF52B0F1B5E0062622C /* Router.swift in Sources */,
 				10CB8F152B01B98400CFC8D6 /* CustomButton.swift in Sources */,
 				10CB8F182B01B9C900CFC8D6 /* UIView + ext.swift in Sources */,
 				10CB8F102B01B91300CFC8D6 /* TestingViewController.swift in Sources */,

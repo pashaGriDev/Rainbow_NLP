@@ -14,8 +14,8 @@ class MainViewController: UIViewController {
     
     // MARK: - init(_:)
     init(
-        mainView: MainViewProtocol = MainView(),
-        presenter: MainPresenterProtocol = MainPresenter()
+        mainView: MainViewProtocol,
+        presenter: MainPresenterProtocol
     ) {
         self.mainView = mainView
         self.presenter = presenter
