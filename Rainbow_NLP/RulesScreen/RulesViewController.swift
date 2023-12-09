@@ -15,11 +15,7 @@ struct TextConstants {
 final class RulesViewController: BaseViewController {
     
     //MARK: - UI Elements
-    private lazy var rulesScrollView: UIScrollView = {
-        let element = UIScrollView()
-        element.showsVerticalScrollIndicator = true
-        return element
-    }()
+    private lazy var rulesScrollView = UIScrollView()
     
     private lazy var rulesContentView: UIView = {
         let view = UIView()

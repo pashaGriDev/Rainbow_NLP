@@ -5,6 +5,7 @@
 //  Created by Павел Грицков on 23.11.23.
 //
 
+
 import XCTest
 @testable import Rainbow_NLP
 final class MainPresenterTest: XCTestCase {
@@ -12,7 +13,7 @@ final class MainPresenterTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = MainPresenter()
+//        sut = MainPresenter()
     }
     
     override func tearDown() {

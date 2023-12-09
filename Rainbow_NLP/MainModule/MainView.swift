@@ -7,8 +7,6 @@
 
 import UIKit
 
-// дизайн сомнительный потому пока не трогаю!!!
-
 protocol MainViewProtocol: UIView {
     var newGameButton: UIButton { get }
     var continueGameButton: UIButton { get }
@@ -78,8 +76,7 @@ final class MainView: UIView, MainViewProtocol {
 
 // MARK: - Private extension
 private extension MainView{
-    func setLayout() {
-        [
+    func setLayout() {[
             rainbowImage,
             nlpLabel,
             rainbowLabel,
@@ -110,10 +107,10 @@ private extension MainView{
              rainbowLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
              rainbowLabel.topAnchor.constraint(equalTo: nlpLabel.bottomAnchor),
              
-             buttonContainer.topAnchor.constraint(equalTo: rainbowLabel.bottomAnchor, constant: 20),
              buttonContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Drawing.buttonPadding),
              buttonContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Drawing.buttonPadding),
-             buttonContainer.heightAnchor.constraint(lessThanOrEqualToConstant: 400),
+             buttonContainer.bottomAnchor.constraint(equalTo: settingGameButton.topAnchor, constant: -20),
+             buttonContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 250),
              
              settingGameButton.topAnchor.constraint(lessThanOrEqualTo: buttonContainer.bottomAnchor, constant: 20),
              settingGameButton.widthAnchor.constraint(equalToConstant: Drawing.buttonSize),

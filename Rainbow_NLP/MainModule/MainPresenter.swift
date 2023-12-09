@@ -23,7 +23,7 @@ protocol MainPresenterDelegate {
 final class MainPresenter: MainPresenterProtocol {
     // MARK: - Dependencies
     let router: RouterProtocol
-    
+        
     init(
         _ router: RouterProtocol
     ) {
@@ -38,21 +38,17 @@ extension MainPresenter {
     
     func tappedContinueGameButton() {
         print(#function)
-
     }
     
     func tappedResultGameButton() {
         print(#function)
-
     }
     
     func tappedSettingGameButton() {
-        print(#function)
-
+        router.pushSettingGame()
     }
     
     func tappedRulesGameButton() {
-        print(#function)
-
+        router.pushRulesGame()
     }
 }

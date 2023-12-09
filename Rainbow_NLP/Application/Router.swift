@@ -15,6 +15,8 @@ protocol Router {
 protocol RouterActionProtocol {
     func initController()
     func pushGame()
+    func pushSettingGame()
+    func pushRulesGame()
     func pop()
     func popToRoot()
 }
@@ -43,7 +45,16 @@ final class RouterImp: RouterProtocol {
     
     func pushGame() {
         print(#function)
-//        fatalError("Game Over!!!")
+    }
+    
+    func pushSettingGame() {
+        let vc = SettingsViewController()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func pushRulesGame() {
+        let vc = RulesViewController()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func pop() {

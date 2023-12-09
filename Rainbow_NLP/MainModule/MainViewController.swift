@@ -33,10 +33,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        setConstraints()
     }
     
-    func setup() {
+    func setConstraints() {
         navigationController?.navigationBar.isHidden = true
         
         mainView.newGameButton.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
@@ -66,9 +66,6 @@ class MainViewController: UIViewController {
     
     func settingsButtonTapped(_ sender: UIButton) {
         presenter.tappedSettingGameButton()
-
-//        let vc = SettingsViewController()
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func continueButtonTapped(_ sender: UIButton) {
@@ -81,8 +78,5 @@ class MainViewController: UIViewController {
     
     func resultButtonTapped(_ sender: UIButton) {
         presenter.tappedResultGameButton()
-
-//        let vc = ResultsViewController()
-//        navigationController?.pushViewController(vc, animated: true)
     }
 }
