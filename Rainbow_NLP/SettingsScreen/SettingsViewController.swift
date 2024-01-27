@@ -27,6 +27,7 @@ final class SettingsViewController: BaseViewController {
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: layout

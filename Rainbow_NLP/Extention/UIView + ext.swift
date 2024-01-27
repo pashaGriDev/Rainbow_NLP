@@ -82,8 +82,14 @@ extension UIView {
         case horizontal
         case vertical
     }
-
-    func createGradientLayer(from startColor: UIColor, to endColor: UIColor, direction: GradientDirection, frame: CGRect) -> CAGradientLayer {
+// градиент цвета
+    func createGradientLayer(
+        from startColor: UIColor,
+        to endColor: UIColor,
+        direction: GradientDirection,
+        frame: CGRect
+    ) -> CAGradientLayer {
+        
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = frame
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]

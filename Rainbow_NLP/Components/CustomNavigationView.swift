@@ -41,6 +41,14 @@ final class CustomNavigationView: UIView {
         super.init(frame: .zero)
         self.backgroundColor = Drawing.backgroundColor
         addSubview(backButton, titleLabel, pauseButton)
+        backgroundColor = .blue
+        
+//        self.layer.insertSublayer(
+//            createGradientLayer(from: .cyan.withAlphaComponent(0.5),
+//                                to: .blue.withAlphaComponent(0.5),
+//                                direction: .horizontal,
+//                                frame: self.bounds),
+//            at: 0)
     }
     
     required init?(coder: NSCoder) {
@@ -54,12 +62,6 @@ final class CustomNavigationView: UIView {
             width: Drawing.screenWidth,
             height: Drawing.height
         )
-        self.layer.insertSublayer(
-            createGradientLayer(from: .cyan.withAlphaComponent(0.5),
-                                to: .blue.withAlphaComponent(0.5),
-                                direction: .horizontal,
-                                frame: self.bounds),
-            at: 0)
         
         setLayout()
     }

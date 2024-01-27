@@ -57,7 +57,7 @@ final class MainView: UIView, MainViewProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = .backgroundColor
+        self.backgroundColor = .lightGray
         addSubview(
             rainbowImage,
             settingGameButton,
